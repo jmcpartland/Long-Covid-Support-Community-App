@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { Route, Routes } from "react-router-dom"
 import logo from './logo.svg';
 import './App.css';
+import Home from "./components/Home"
+ 
 
 function App() {
 
   return (
     <div className="App">
-      <h3>Phase 5 Project</h3>
+      <Routes>
+          <Route exact path="/" element={<Home />} />
+      </Routes>          
     </div>
   );
 }
