@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React from "react"
 import { Route, Routes } from "react-router-dom"
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
 import Home from "./components/Home"
- 
+import Signup from "./components/Signup"
+import Login from "./components/Login"
+import Navbar from "./components/Navbar"
+import { UserProvider } from "./context/user"
 
-function App() {
+
+function App(props) {
 
   return (
     <div className="App">
-      <Routes>
+      <UserProvider>
+        <Navbar />
+        <Routes>
           <Route exact path="/" element={<Home />} />
-      </Routes>          
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
+        </Routes>
+      </UserProvider>
     </div>
   );
 }
