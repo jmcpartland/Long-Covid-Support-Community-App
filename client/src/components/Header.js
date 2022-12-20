@@ -6,17 +6,27 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import LoginModal from './LoginModal';
+import SignupModal from './SignupModal';
 
-function Header(props) {
-  const { sections, title } = props;
+
+function Header() {
+  const title = "Long Covid Support"
+  const sections = [
+    { title: 'Resources', url: '#' },
+    { title: 'Blogs', url: '#' },
+    { title: 'Statistics', url: '#' },
+  ];
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <Button variant="outlined" size="small">Login</Button>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'grey.200' }}>
+
+        <LoginModal />
+
         <Typography
           component="h2"
-          variant="h5"
+          variant="h4"
           color="inherit"
           align="center"
           noWrap
@@ -27,9 +37,7 @@ function Header(props) {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <Button variant="outlined" size="small">
-          Sign up
-        </Button>
+        <SignupModal />
       </Toolbar>
       <Toolbar
         component="nav"

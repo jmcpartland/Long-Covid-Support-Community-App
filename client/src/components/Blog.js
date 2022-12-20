@@ -16,11 +16,7 @@ import Footer from './Footer';
 // import post2 from './component/blog-post.2.md';
 // import post3 from './component/blog-post.3.md';
 
-const sections = [
-  { title: 'Resources', url: '#' },
-  { title: 'Blogs', url: '#' },
-  { title: 'Statistics', url: '#' },
-];
+
 
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
@@ -77,9 +73,11 @@ export default function Blog() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Long Covid Support" sections={sections} />
+        {/* <Header title="Long Covid Support" sections={sections} /> */}
         <main>
+
           <MainFeaturedPost post={mainFeaturedPost} />
+
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
