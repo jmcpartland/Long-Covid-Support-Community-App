@@ -17,10 +17,6 @@ function Navbar() {
         })
     }
 
-    const handleShowAllSupplements = () => {
-        navigate('/all-supplements')
-    }
-
     const handleShowHome = () => {
         navigate('/')
     }
