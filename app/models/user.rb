@@ -3,4 +3,6 @@ class User < ApplicationRecord
 
     validates :email, :password, :password_confirmation, presence: true
     
+    has_many :posts
+    has_many :comments
 end
