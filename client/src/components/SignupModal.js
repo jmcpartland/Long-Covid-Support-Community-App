@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function SignupModal() {
+function SignupModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -34,7 +34,7 @@ export default function SignupModal() {
 
       <Box  sx={style}>
         {/* <Typography id="modal-modal-title" variant="h6" component="h2"></Typography> */}
-          <Signup />
+          <Signup handleClose={handleClose}/>
       </Box>
 
         {/* <Box sx={style}>
@@ -50,3 +50,5 @@ export default function SignupModal() {
     </div>
   );
 }
+
+export default SignupModal;

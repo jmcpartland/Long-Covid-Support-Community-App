@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -8,21 +8,51 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
+import { UserContext } from "../context/user";
+import { useNavigate } from "react-router-dom"
 
 
 function Header() {
+  const { user, logout, loggedIn} = useContext(UserContext);
+  const navigate = useNavigate()
+
   const title = "Long Covid Support"
+
   const sections = [
     { title: 'Resources', url: '#' },
     { title: 'Blogs', url: '#' },
     { title: 'Statistics', url: '#' },
   ];
 
+
+  const handleLogout = () => {
+      fetch('/logout', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' }
+      })
+      .then(() => {
+          logout()
+          navigate('/')
+      })
+  }
+
+
+  const LogInOrOut = () => {
+    if (loggedIn) {
+      return <Button onClick={handleLogout} variant="outlined" size="small">Logout</Button>
+
+    } else {
+      return <LoginModal />
+    }
+  }
+
+
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'grey.200' }}>
 
-        <LoginModal />
+        {/* <LoginModal /> */}
+        {LogInOrOut()}
 
         <Typography
           component="h2"

@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function SignUp({ handleClose }) {
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   const data = new FormData(event.currentTarget);
@@ -34,7 +34,6 @@ function SignUp() {
   const navigate = useNavigate()
   const {signup} = useContext(UserContext);
 
-
   function Copyright() {
     return (
       <Typography variant="body2" color="text.secondary" align="center">
@@ -49,8 +48,6 @@ function SignUp() {
   }
   
   const theme = createTheme();
-
-
 
   const handleSubmit = (e) => {
       e.preventDefault()
@@ -69,6 +66,7 @@ function SignUp() {
       .then(user => {
           if (!user.errors) {
               signup(user)
+              handleClose(true)
               navigate('/')
           } else {
               setFirstName("")
@@ -83,10 +81,6 @@ function SignUp() {
           }
       })
   }
-
-
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -112,53 +106,63 @@ function SignUp() {
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
+                  value={firstName}
                   required
                   fullWidth
                   id="firstName"
                   label="First Name"
                   autoFocus
-                />
+                  onChange={(e) => setFirstName(e.target.value)}
+                  />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  autoComplete="family-name"
+                  name="lastName"
+                  value={lastName}
                   required
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
+                  onChange={(e) => setLastName(e.target.value)}
+                  />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  autoComplete="email"
+                  name="email"
+                  value={email}
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
+                  onChange={(e) => setEmail(e.target.value)}
+                  />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  autoComplete="new-password"
+                  name="password"
+                  value={password}
                   required
                   fullWidth
-                  name="password"
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
-                />
+                  onChange={(e) => setPassword(e.target.value)}
+                  />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  autoComplete="new-password"
+                  name="passwordConfirmation"
+                  value={passwordConfirmation}
                   required
                   fullWidth
-                  name="passwordConfirmation"
                   label="Password Confirmation"
                   type="password"
                   id="passwordConfirmation"
-                  autoComplete="new-password"
+                  onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
               </Grid>
               {/* <Grid item xs={12}>
@@ -186,6 +190,9 @@ function SignUp() {
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
+          <ul>
+            <h3>{errorsList}</h3>
+          </ul>
       </Container>
     </ThemeProvider>
   );
