@@ -13,7 +13,7 @@ import { UserProvider } from "./context/user";
 function App(props) {
 
   return (
-    <div className="App">
+    <div>
       <UserProvider>
       <CssBaseline />
         <Header />

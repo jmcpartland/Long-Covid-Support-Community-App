@@ -20,7 +20,6 @@ function Posts() {
     if (loggedIn) {
         return (
             <>
-              <h1>My Posts</h1>
               {postList}
             </>
         )
