@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Container } from "@mui/system";
+import Grid from '@mui/material/Grid';
 import { UserContext } from '../context/user';
 import Post from '../components/Post'
 
@@ -19,9 +21,11 @@ function Posts() {
 
     if (loggedIn) {
         return (
-            <>
+          <Container>
+            <Grid container spacing={2} marginBottom={4} >
               {postList}
-            </>
+            </Grid>
+          </Container>
         )
     } else {
       <div>
