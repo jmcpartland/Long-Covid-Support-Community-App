@@ -3,9 +3,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
-// import Signup from "./components/Signup";
+import PostForm from "./components/PostForm";
 import Login from "./components/Login";
-import Blog from "./components/Blog";
+import Posts from "./components/Posts";
 import Home from "./components/Home";
 import { UserProvider } from "./context/user";
 
@@ -19,7 +19,8 @@ function App(props) {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/signup" element={<Signup />} /> */}
+          <Route exact path="/post-form" element={<PostForm />} />
+          <Route exact path="/posts" element={<Posts />} />
           <Route exact path="/login" element={<Login />} />
         </Routes>
       </UserProvider>

@@ -1,29 +1,25 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from '@mui/material/Link';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom"
 
-
 function Header() {
-  const { user, logout, loggedIn} = useContext(UserContext);
+  const {logout, loggedIn} = useContext(UserContext);
   const navigate = useNavigate()
-
-  const title = "Long Covid Support"
+  const title = "Long Covid Support Community"
 
   const sections = [
     { title: 'Resources', url: '#' },
     { title: 'Blogs', url: '#' },
     { title: 'Statistics', url: '#' },
   ];
-
 
   const handleLogout = () => {
       fetch('/logout', {
@@ -36,37 +32,51 @@ function Header() {
       })
   }
 
-
   const LogInOrOut = () => {
     if (loggedIn) {
       return <Button onClick={handleLogout} variant="outlined" size="small">Logout</Button>
-
     } else {
       return <LoginModal />
     }
   }
 
+  const theme = createTheme({
+    status: {
+      danger: '#e53e3e',
+    },
+    palette: {
+      primary: {
+        main: '#ffffff',
+        darker: '#053e85',
+      },
+      neutral: {
+        main: '#64748B',
+        contrastText: '#fff',
+      },
+    },
+  });
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'grey.200' }}>
+      <ThemeProvider theme={theme}>
 
-        {/* <LoginModal /> */}
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#008B8B' }}>
+
         {LogInOrOut()}
 
         <Typography
           component="h2"
           variant="h4"
-          color="inherit"
+          color="#ffffff"
           align="center"
           noWrap
           sx={{ flex: 1 }}
         >
           {title}
         </Typography>
-        <IconButton>
+        {/* <IconButton>
           <SearchIcon />
-        </IconButton>
+        </IconButton> */}
         <SignupModal />
       </Toolbar>
       <Toolbar
@@ -87,18 +97,19 @@ function Header() {
           </Link>
         ))}
       </Toolbar>
+      </ThemeProvider>
     </React.Fragment>
   );
 }
 
-Header.propTypes = {
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  title: PropTypes.string.isRequired,
-};
+// Header.propTypes = {
+//   sections: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       title: PropTypes.string.isRequired,
+//       url: PropTypes.string.isRequired,
+//     }),
+//   ).isRequired,
+//   title: PropTypes.string.isRequired,
+// };
 
 export default Header;
