@@ -7,9 +7,8 @@ class PostsController < ApplicationController
     end
     
     def create
-        # binding.pry
-
         post = current_user.posts.create(post_params)
+
         if post.valid?
             render json: post
         else
@@ -18,6 +17,12 @@ class PostsController < ApplicationController
     end
 
     def show
+        post = current_user.posts.find_by(id: params[:id])
+        if post
+            render json: post
+        else
+            render json: { error: "Order not found" }, status: :unauthorized
+        end
     end
 
     def update

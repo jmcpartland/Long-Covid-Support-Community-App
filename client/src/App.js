@@ -21,6 +21,7 @@ function App(props) {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/post-form" element={<PostForm />} />
           <Route exact path="/posts" element={<Posts />} />
+          <Route exact path="/posts/:id" element={<Posts />} />
           <Route exact path="/login" element={<Login />} />
         </Routes>
       </UserProvider>

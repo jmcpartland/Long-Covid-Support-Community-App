@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -7,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from '@mui/material/Link';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
+import AccountMenu from './AccountMenu';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom"
 
@@ -16,9 +16,10 @@ function Header() {
   const title = "Long Covid Support Community"
 
   const sections = [
-    { title: 'Resources', url: '#' },
-    { title: 'Blogs', url: '#' },
-    { title: 'Statistics', url: '#' },
+    { title: 'Home', url: '/' },
+    { title: 'Blogs', url: '/posts' },
+    // { title: 'Resources', url: '#' },
+    // { title: 'Statistics', url: '#' },
   ];
 
   const handleLogout = () => {
@@ -37,6 +38,14 @@ function Header() {
       return <Button onClick={handleLogout} variant="outlined" size="small">Logout</Button>
     } else {
       return <LoginModal />
+    }
+  }
+
+  const SignupOrAccount = () => {
+    if (loggedIn) {
+      return <AccountMenu />
+    } else {
+      return <SignupModal />
     }
   }
 
@@ -59,7 +68,6 @@ function Header() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#4682B4' }}>
 
         {LogInOrOut()}
@@ -69,15 +77,13 @@ function Header() {
           variant="h4"
           color="#ffffff"
           align="center"
-          noWrap
           sx={{ flex: 1 }}
         >
           {title}
         </Typography>
-        {/* <IconButton>
-          <SearchIcon />
-        </IconButton> */}
-        <SignupModal />
+         
+         {SignupOrAccount()}
+
       </Toolbar>
       <Toolbar
         component="nav"
@@ -101,15 +107,5 @@ function Header() {
     </React.Fragment>
   );
 }
-
-// Header.propTypes = {
-//   sections: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       title: PropTypes.string.isRequired,
-//       url: PropTypes.string.isRequired,
-//     }),
-//   ).isRequired,
-//   title: PropTypes.string.isRequired,
-// };
 
 export default Header;

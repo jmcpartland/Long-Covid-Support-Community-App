@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container } from "@mui/system";
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { UserContext } from '../context/user';
 import Post from '../components/Post'
@@ -13,7 +13,6 @@ function Posts() {
         .then(res => res.json())
         .then(data => {
             setPosts(data)
-            console.log(data)
         })
     }, [])
 
@@ -21,11 +20,11 @@ function Posts() {
 
     if (loggedIn) {
         return (
-          <Container>
-            <Grid container spacing={2} marginBottom={4} >
-              {postList}
-            </Grid>
-          </Container>
+            <Box spacing={2} margin={2}>
+              <Grid container spacing={4}>
+                {postList}
+              </Grid>
+            </Box>
         )
     } else {
       <div>
