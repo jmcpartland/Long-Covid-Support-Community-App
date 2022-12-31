@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import TextField from '@mui/material/TextField';
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import { UserContext } from "../context/user";
@@ -41,45 +41,43 @@ function PostForm() {
 
     if (loggedIn) {
       return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div>
+        <Box
+          component="form"
+          padding={1}
+          sx={{
+            '& .MuiTextField-root': { mb: 1, width: '120ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
         <form onSubmit={handleSubmit}>
-        {/* <Grid container alignItems="left" justify="left" direction="column" padding="2">
-          <Grid item> */}
-          <FormControl fullWidth sx={{ m: 1 }}>
             <TextField 
+              inputProps={{style: {fontSize: 40}}}
               label="Title"
+              variant="filled"
               id="title"
               name="title"
               value={title}
-              rows={25}
+              rows={1}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </FormControl>
-          {/* </Grid> */}
           <br/>
-          {/* <Grid item> */}
-          <FormControl fullWidth sx={{ m: 1 }}>
             <TextField 
               multiline
               label="Post"
+              variant="filled"
               id="body"
               name="body"
               value={body}
               rows={25}
               onChange={(e) => setBody(e.target.value)}
             />
-          </FormControl>
-          <FormControl fullWidth sx={{ m: 1 }}>
-              <Button variant="contained" color="primary" type="submit">
+          <br/>
+            <Button variant="contained" color="primary" type="submit">
               Submit
             </Button>
-          </FormControl>
-          {/* </Grid> */}
-        {/* </Grid> */}
       </form>
         {errorsList}
-    </div>
     </Box>
   )
   } else {

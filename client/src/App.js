@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import PostForm from "./components/PostForm";
 import Login from "./components/Login";
 import Posts from "./components/Posts";
+import AllPosts from "./components/AllPosts";
 import Home from "./components/Home";
 import { UserProvider } from "./context/user";
 
@@ -21,7 +22,7 @@ function App(props) {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/post-form" element={<PostForm />} />
           <Route exact path="/posts" element={<Posts />} />
-          <Route exact path="/posts/:id" element={<Posts />} />
+          <Route exact path="/all-posts" element={<AllPosts />} />
           <Route exact path="/login" element={<Login />} />
         </Routes>
       </UserProvider>

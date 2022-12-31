@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
     before_action :authorize
 
+    def all_posts
+        posts = Post.all
+        render json: posts
+    end
+    
     def index
         posts = current_user.posts
         render json: posts

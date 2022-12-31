@@ -9,6 +9,7 @@ import SignupModal from './SignupModal';
 import AccountMenu from './AccountMenu';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom"
+import PostForm from './PostForm';
 
 function Header() {
   const {logout, loggedIn} = useContext(UserContext);
@@ -17,7 +18,8 @@ function Header() {
 
   const sections = [
     { title: 'Home', url: '/' },
-    { title: 'Blogs', url: '/posts' },
+    { title: 'My Posts', url:'/posts'},
+    { title: 'All Posts', url: '/all-posts' },
     // { title: 'Resources', url: '#' },
     // { title: 'Statistics', url: '#' },
   ];
@@ -43,8 +45,13 @@ function Header() {
 
   const SignupOrAccount = () => {
     if (loggedIn) {
-      return <AccountMenu />
-    } else {
+      return (
+        <>
+          <Button variant="outlined" size="small" href="/post-form">Create Post</Button>,
+          <AccountMenu />
+        </>
+      )
+      } else {
       return <SignupModal />
     }
   }
