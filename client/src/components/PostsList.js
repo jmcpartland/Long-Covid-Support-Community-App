@@ -4,12 +4,12 @@ import Grid from '@mui/material/Grid';
 import { UserContext } from '../context/user';
 import Posts from '../components/Posts'
 
-function AllPosts() {
+function PostsList() {
     const {loggedIn} = useContext(UserContext)
     const [posts, setPosts] = useState([])
 
     useEffect(() => { 
-        fetch('/all-posts')
+        fetch('/posts')
         .then(res => res.json())
         .then(data => {
             setPosts(data)
@@ -33,4 +33,4 @@ function AllPosts() {
     }
 }
 
-export default AllPosts
+export default PostsList

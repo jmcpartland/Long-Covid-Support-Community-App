@@ -22,9 +22,10 @@ const Home = () => {
     return(
         <Container>
             <Box sx={{ width: '90%'}}>
-                <Typography variant="h5" align="left">
+                <Typography variant="h3" align="left">
                     { Customize() }
                 </Typography>
+                <br/>
                 <Typography variant="h6" align="left">
                     What we are about
                 </Typography>
