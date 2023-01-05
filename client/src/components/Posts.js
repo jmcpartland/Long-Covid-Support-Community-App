@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-// import CardActions from '@mui/material/CardActions';
+import CardActions from '@mui/material/CardActions';
 import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
-// import IconButton from '@mui/material/IconButton';
-// import Typography from '@mui/material/Typography';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import ShareIcon from '@mui/icons-material/Share';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
-// import Post from './Post';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Chip from '@mui/material/Chip';
 
 
 function Posts({post}) {
@@ -25,6 +26,13 @@ function Posts({post}) {
     navigate(`/posts/${post.id}`)
   };
 
+  const handleClick = (e) => {
+    console.log(e)
+  }
+
+  const handleDelete = () => {
+    console.log('You clicked the delete icon.');
+  };
 
   return (
     <Grid item xs={6}>
@@ -49,16 +57,26 @@ function Posts({post}) {
           image={niagra}
           alt="Niagra Falls"
         /> */}
-        {/* <CardActions disableSpacing>
+        </CardActionArea>
+        <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
           </IconButton>
-        </CardActions> */}
-
-        </CardActionArea>
+          <IconButton aria-label="delete">
+            <DeleteIcon onClick={handleClick} />
+          </IconButton>
+        </CardActions>
+        
+        {/* <Chip
+          label="Delete"
+          onClick={handleClick}
+          onDelete={handleDelete}
+          deleteIcon={<DeleteIcon />}
+          variant="outlined"
+        /> */}
 
       </Card>
     </Grid>
