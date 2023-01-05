@@ -6,6 +6,15 @@ class PostsController < ApplicationController
         render json: posts
     end
     
+    def show_all_posts
+        post = Post.find_by(id: params[:id])
+        if post
+            render json: post
+        else
+            render json: { error: "Post not found" }, status: :unauthorized
+        end
+    end
+
     def index
         posts = current_user.posts
         render json: posts
@@ -13,7 +22,7 @@ class PostsController < ApplicationController
     
     def create
         post = current_user.posts.create(post_params)
-
+        
         if post.valid?
             render json: post
         else
@@ -26,7 +35,7 @@ class PostsController < ApplicationController
         if post
             render json: post
         else
-            render json: { error: "Order not found" }, status: :unauthorized
+            render json: { error: "Post not found" }, status: :unauthorized
         end
     end
 
@@ -45,7 +54,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:title, :body, :user_id)
+        params.permit(:title, :body, :user_initial, :user_id)
     end
     
     def authorize

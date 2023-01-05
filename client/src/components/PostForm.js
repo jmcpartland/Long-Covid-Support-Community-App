@@ -2,17 +2,20 @@ import React, { useState, useContext } from "react";
 import TextField from '@mui/material/TextField';
 // import Grid from "@mui/material/Grid";
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
+// import FormControl from '@mui/material/FormControl';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 
 function PostForm() {
-  const { loggedIn } = useContext(UserContext)
+  const { user, loggedIn } = useContext(UserContext)
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const [errorsList, setErrorsList] = useState([])
   const navigate = useNavigate()
+
+  const userInitial = user.first_name
+  // console.log(userInitial.charAt(0))
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -23,6 +26,7 @@ function PostForm() {
         body: JSON.stringify({
             title: title,
             body: body,
+            user_initial: userInitial,
             })
     })
         .then(res => res.json())
@@ -30,7 +34,7 @@ function PostForm() {
             if(!p.errors) {
                 setTitle("")
                 setBody("")
-                navigate('/')
+                navigate('/posts')
             } else {
                 const errorLis = p.errors.map(e => <h3>{e}</h3>)
                 setErrorsList(errorLis)
@@ -42,7 +46,7 @@ function PostForm() {
     if (loggedIn) {
       return (
         <Box
-          component="form"
+          // component="form"
           padding={1}
           sx={{
             '& .MuiTextField-root': { mb: 1, width: '120ch' },

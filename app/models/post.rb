@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-    validates :title, :body, presence: true
-    
-    has_many :comments
+  validates :title, :body, :user_initial, presence: true
+  has_many :comments
 end
