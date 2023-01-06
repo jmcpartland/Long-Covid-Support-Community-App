@@ -1,36 +1,71 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
+import React, { useContext } from 'react';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardActions from '@mui/material/CardActions';
+import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { UserContext } from '../context/user';
-import Posts from '../components/Posts'
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import { UserContext } from "../context/user";
+import { useNavigate } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-function AllPosts() {
-    const {loggedIn} = useContext(UserContext)
-    const [posts, setPosts] = useState([])
 
-    useEffect(() => { 
-        fetch('/all-posts')
-        .then(res => res.json())
-        .then(data => {
-            setPosts(data)
-        })
-    }, [])
+function AllPosts({post}) {
+  const { user, loggedIn } = useContext(UserContext)
+  const navigate = useNavigate()
 
-    const postListing = posts.map(p => <Posts key={p.id} post={p} />)
+  const handleCardClick = () => {
+    navigate(`/all-posts/${post.id}`)
+  };
 
-    if (loggedIn) {
-        return (
-            <Box spacing={2} margin={2}>
-              <Grid container spacing={4}>
-                {postListing}
-              </Grid>
-            </Box>
-        )
-    } else {
-      <div>
-          <h3>You need to be logged in read posts</h3>
-      </div>
-    }
+  const handleClick = (e) => {
+    console.log(e)
+  }
+
+  const handleDelete = (e) => {
+    console.log(e);
+  };
+
+  return (
+    <Grid item xs={6}>
+      <Card sx={{ minWidth: 300 }}>
+      <CardActionArea onClick={handleCardClick} >
+        <CardHeader
+          avatar={ <Avatar sx={{ width: 32, height: 32 }}>{post.user_initial}</Avatar> }
+          // action={
+          //   <IconButton aria-label="settings">
+          //     <MoreVertIcon />
+          //   </IconButton>
+          // }
+          title={ post.title }
+          subheader={ post.created_at }
+        />
+        {/* <CardMedia
+          component="img"
+          height="15%"
+          width="15%"
+          image={niagra}
+          alt="Niagra Falls"
+        /> */}
+        </CardActionArea>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          {/* <IconButton aria-label="delete" onClick={handleClick}>
+            <DeleteIcon />
+          </IconButton> */}
+        </CardActions>
+      </Card>
+    </Grid>
+  );
 }
 
-export default AllPosts
+export default AllPosts;

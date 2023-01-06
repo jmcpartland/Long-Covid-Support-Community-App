@@ -11,14 +11,14 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import AddComment from './AddComment';
 
-function Post() {
+function AllPost() {
   const { user, loggedIn } = useContext(UserContext);
   const params = useParams();
   const [ post, setPost ] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`/posts/${params.id}`)
+    fetch(`/all-posts/${params.id}`)
     .then(res => res.json())
     .then(data => setPost(data))
   }, [])
@@ -31,24 +31,17 @@ function Post() {
     <>
     <Box margin={2} justifyContent="center">
       <Card sx={{ padding: 2 }}>
-        <Avatar sx={{ width: 32, height: 32 }}>
-          {post.user_initial}
-        </Avatar>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites" onClick={handleClick}>
+        <Avatar sx={{ width: 32, height: 32 }}>{post.user_initial}</Avatar>
+        <CardActions >
+          <IconButton aria-label="add to favorites"  onClick={handleClick}>
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share" onClick={handleClick}>
+          <IconButton aria-label="share"  onClick={handleClick}>
             <ShareIcon />
           </IconButton>
         </CardActions>
 
         <h1>{ post.title }</h1>
-
-        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} >
-          Edit
-        </Button>
-        <br/>
         { post.body }
       </Card>
 
@@ -59,4 +52,4 @@ function Post() {
   );
 }
 
-export default Post;
+export default AllPost;
