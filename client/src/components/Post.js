@@ -13,18 +13,32 @@ import AddComment from './AddComment';
 
 function Post() {
   const { user, loggedIn } = useContext(UserContext);
-  const params = useParams();
+  const [ author, setAuthor ] = useState([])
   const [ post, setPost ] = useState([])
+  const params = useParams();
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`/posts/${params.id}`)
+    fetch(`/all-posts/${params.id}`)
     .then(res => res.json())
-    .then(data => setPost(data))
+    .then(data => {
+      setPost(data)
+      setAuthor(data.user)
+    })
   }, [])
+
+  // console.log(post.user.email)
 
   const handleClick = (e) => {
     console.log(e)
+  }
+
+  const handleEditButton = () => {
+    if (post.user_id == user.id) {
+      return (
+        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} >Edit</Button>
+      )
+    }
   }
 
   return (
@@ -34,6 +48,9 @@ function Post() {
         <Avatar sx={{ width: 32, height: 32 }}>
           {post.user_initial}
         </Avatar>
+
+          { author.email }
+
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites" onClick={handleClick}>
             <FavoriteIcon />
@@ -44,10 +61,7 @@ function Post() {
         </CardActions>
 
         <h1>{ post.title }</h1>
-
-        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} >
-          Edit
-        </Button>
+        {handleEditButton()}
         <br/>
         { post.body }
       </Card>

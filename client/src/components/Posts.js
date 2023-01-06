@@ -35,7 +35,7 @@ function Posts({post}) {
       <Card sx={{ minWidth: 300 }}>
       <CardActionArea onClick={handleCardClick} >
         <CardHeader
-          avatar={ <Avatar sx={{ width: 32, height: 32 }}>{post.user_initial}</Avatar> }
+          avatar={ <Avatar sx={{ width: 32, height: 32 }}>{post.user.first_name.charAt(0).toUpperCase()}</Avatar> }
           // action={
           //   <IconButton aria-label="settings">
           //     <MoreVertIcon />

@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
     def all_posts
         posts = Post.all
+
         render json: posts
     end
     

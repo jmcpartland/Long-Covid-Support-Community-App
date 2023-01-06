@@ -21,6 +21,7 @@ function PostsList() {
     if (loggedIn) {
         return (
             <Box spacing={2} margin={2}>
+              <h1>My Posts</h1>
               <Grid container spacing={4}>
                 {postListing}
               </Grid>
