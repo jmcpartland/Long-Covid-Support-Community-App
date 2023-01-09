@@ -2,16 +2,23 @@ class CommentsController < ApplicationController
     before_action :authorize
 
     def index
-        # binding.pry
-
         post = Post.find_by(id: params[:id])
-        render json: post.comments
+        postComment = post.comments
 
-        # post_comments = post.comments.sort
-        # render json: { user_id: user.id, post_id: post.id, comment: comment.comment_text }
+        render json: postComment
+    end
+
+    def show_all_comments
+        # binding.pry
+        post = Post.find_by(id: params[:id])
+        postComment = post.comments
+
+        render json: postComment
     end
 
     def create
+        # binding.pry
+
         comment = current_user.comments.create(comment_params)
         if comment.valid?
             render json: comment

@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
   
+  get '/posts/:id/comments', to: 'comments#show_all_comments'
   resources :posts, only: [:index, :show, :create, :destroy]
-  resources :comments, only: [:index, :show, :create, :destroy]
-  get '/posts/:id/comments', to: 'comments#index'
+  resources :comments, only: [:show, :create, :destroy]
   get '/all-posts', to: 'posts#all_posts'
   get '/all-posts/:id', to: 'posts#show_all_posts'
 

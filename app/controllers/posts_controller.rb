@@ -6,8 +6,9 @@ class PostsController < ApplicationController
 
         render json: posts
     end
-    
+
     def show_all_posts
+        # binding.pry
         post = Post.find_by(id: params[:id])
         if post
             render json: post
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
             render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
         end
     end
-
+    
     def show
         post = current_user.posts.find_by(id: params[:id])
         if post

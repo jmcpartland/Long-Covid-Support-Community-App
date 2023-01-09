@@ -1,29 +1,39 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { UserContext } from "../context/user";
-import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
-
+import Comments from "./Comments";
 
 function AddComment({post}) {
   const { loggedIn } = useContext(UserContext)
   const [commentText, setCommentText] = useState([])
-
-  useEffect(() => {
-    fetch(`\posts\${post.id}\comments`)
-    .then(res => res.json())
-    .then(data => {
-        setCommentText(data)
-    })
-  },[])
-
+  const [errorsList, setErrorsList] = useState([])
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
-      e.preventDefault()
-      console.log(commentText)
-  }
+    e.preventDefault()
 
+    fetch("/comments", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            comment_text: commentText,
+            post_id: post.id,
+            })
+    })
+        .then(res => res.json())
+        // .then(c => {
+        //     if(!c.errors) {
+        //         setCommentText([])
+        //         navigate(`/posts/${post.id}`)
+        //     } else {
+        //         const errorLis = c.errors.map(e => <h3>{e}</h3>)
+        //         setErrorsList(errorLis)
+        //     }
+        // })
+    }
 
   if (loggedIn) {
     return (
@@ -41,7 +51,7 @@ function AddComment({post}) {
           variant="filled"
           id="Comment"
           name="comment"
-          // value={commentText}
+          value={commentText}
           maxRows={6}
           onChange={(e) => setCommentText(e.target.value)}
         />
@@ -50,9 +60,9 @@ function AddComment({post}) {
           Submit
         </Button>
       </form>
-        <Box>
-
-        </Box>
+        {/* <Box>
+      <Comments post={post}/>
+        </Box> */}
       </Box>
     )
   } else {

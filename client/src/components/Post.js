@@ -10,6 +10,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import AddComment from './AddComment';
+import Comments from './Comments';
 
 function Post() {
   const { user, loggedIn } = useContext(UserContext);
@@ -26,8 +27,6 @@ function Post() {
       setAuthor(data.user)
     })
   }, [])
-
-  // console.log(post.user.email)
 
   const handleClick = (e) => {
     console.log(e)
@@ -67,7 +66,8 @@ function Post() {
       </Card>
 
       <AddComment post={post}/>
-
+      <Comments />
+      
     </Box>
     </>
   );
