@@ -24,15 +24,15 @@ function AddComment({post}) {
             })
     })
         .then(res => res.json())
-        // .then(c => {
-        //     if(!c.errors) {
-        //         setCommentText([])
-        //         navigate(`/posts/${post.id}`)
-        //     } else {
-        //         const errorLis = c.errors.map(e => <h3>{e}</h3>)
-        //         setErrorsList(errorLis)
-        //     }
-        // })
+        .then(c => {
+            if(!c.errors) {
+                setCommentText([])
+                // navigate(`/posts/${post.id}`)
+            } else {
+                const errorLis = c.errors.map(e => <h3>{e}</h3>)
+                setErrorsList(errorLis)
+            }
+        })
     }
 
   if (loggedIn) {

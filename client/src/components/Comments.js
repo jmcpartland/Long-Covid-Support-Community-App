@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate } from 'react-router-dom';
-import Comment from "./Comment"
 
 function Comments() {
   const [comments, setComments] = useState([])
@@ -14,10 +13,10 @@ function Comments() {
       // console.log(data)
         setComments(data)
     })
-  },[])
+  },[comments])
 
   
-  const commentsList = comments.map(c => <p> {c.comment_text} </p>)
+  const commentsList = comments.map(c => <p key={c.id}> {c.comment_text} </p>)
   
   return (
     <div>
