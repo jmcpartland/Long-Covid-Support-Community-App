@@ -13,7 +13,7 @@ function AddComment({post}) {
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
 
     fetch("/comments", {
         method: 'POST',

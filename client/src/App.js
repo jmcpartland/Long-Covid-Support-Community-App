@@ -23,6 +23,7 @@ function App(props) {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/post-form" element={<PostForm />} />
           <Route exact path="/posts/:id" element={<Post />} />
+          <Route exact path="/posts/:id/edit" element={<PostForm />} />
           <Route exact path="/posts" element={<PostsList />} />
           <Route exact path="/all-posts/:id" element={<Post />} />
           <Route exact path="/all-posts" element={<AllPostsList />} />

@@ -13,7 +13,6 @@ import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-
 function Posts({post}) {
   const { user, loggedIn } = useContext(UserContext)
   const navigate = useNavigate()
@@ -36,21 +35,9 @@ function Posts({post}) {
       <CardActionArea onClick={handleCardClick} >
         <CardHeader
           avatar={ <Avatar sx={{ width: 32, height: 32 }}>{post.user.first_name.charAt(0).toUpperCase()}</Avatar> }
-          // action={
-          //   <IconButton aria-label="settings">
-          //     <MoreVertIcon />
-          //   </IconButton>
-          // }
           title={ post.title }
           subheader={ post.created_at }
         />
-        {/* <CardMedia
-          component="img"
-          height="15%"
-          width="15%"
-          image={niagra}
-          alt="Niagra Falls"
-        /> */}
         </CardActionArea>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">

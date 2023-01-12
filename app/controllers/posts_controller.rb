@@ -42,6 +42,17 @@ class PostsController < ApplicationController
     end
 
     def update
+        # binding.pry
+
+        post = current_user.posts.find_by(id: params[:id])
+        post.update(post_params)
+
+        if post.valid?
+            render json: post
+        else
+            render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+        end
+
     end
 
     def destroy

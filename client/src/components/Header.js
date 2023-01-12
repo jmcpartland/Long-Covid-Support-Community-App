@@ -100,24 +100,20 @@ function Header() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#4682B4' }}>
-
-        {LogInOrOut()}
-
-        <Typography
-          component="h2"
-          variant="h4"
-          color="#ffffff"
-          align="center"
-          sx={{ flex: 1 }}
-        >
-          {title}
-        </Typography>
-         
-         {SignupOrAccount()}
-
-      </Toolbar>
-        {showSections()}
+        <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#4682B4' }}>
+          {LogInOrOut()}
+          <Typography
+            component="h2"
+            variant="h4"
+            color="#ffffff"
+            align="center"
+            sx={{ flex: 1 }}
+          >
+            {title}
+          </Typography>
+          {SignupOrAccount()}
+        </Toolbar>
+          {showSections()}
       </ThemeProvider>
     </React.Fragment>
   );

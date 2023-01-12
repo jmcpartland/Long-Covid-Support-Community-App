@@ -32,12 +32,20 @@ function Post() {
     console.log(e)
   }
 
-  const handleEditButton = () => {
+  const editButton = () => {
     if (post.user_id == user.id) {
       return (
-        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }} >Edit</Button>
+        <>
+          <Button onClick={handleEditButton} type="submit" variant="contained" size="small" sx={{ mt: 3, mb: 2 }} >Edit</Button>{" "}
+          <Button type="submit" variant="contained" size="small" sx={{ mt: 3, mb: 2 }} >Delete</Button>
+        </>
       )
     }
+  }
+
+  const handleEditButton = () => {
+    console.log("Edit button clicked")
+    navigate(`/posts/${post.id}/edit`)
   }
 
   return (
@@ -47,9 +55,7 @@ function Post() {
         <Avatar sx={{ width: 32, height: 32 }}>
           {post.user_initial}
         </Avatar>
-
-          { author.email }
-
+          { author.first_name } { author.last_name }
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites" onClick={handleClick}>
             <FavoriteIcon />
@@ -60,14 +66,14 @@ function Post() {
         </CardActions>
 
         <h1>{ post.title }</h1>
-        {handleEditButton()}
+          { editButton() }
         <br/>
-        { post.body }
+          { post.body }
       </Card>
 
       <AddComment post={post}/>
       <Comments />
-      
+
     </Box>
     </>
   );
