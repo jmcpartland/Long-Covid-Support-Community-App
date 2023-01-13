@@ -1,5 +1,4 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -9,8 +8,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="http://localhost:4000/">
+        Long Covid Support Community
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -18,8 +17,8 @@ function Copyright() {
   );
 }
 
-function Footer(props) {
-  const { description, title } = props;
+function Footer() {
+  const title = "Long Covid Support Community"
 
   return (
     <Box component="footer" sx={{ bgcolor: 'background.paper', py: 6 }}>
@@ -33,17 +32,12 @@ function Footer(props) {
           color="text.secondary"
           component="p"
         >
-          {description}
+          {/* {description} */}
         </Typography>
         <Copyright />
       </Container>
     </Box>
   );
 }
-
-Footer.propTypes = {
-  description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default Footer;

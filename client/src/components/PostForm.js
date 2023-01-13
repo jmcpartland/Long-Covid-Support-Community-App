@@ -34,22 +34,6 @@ function PostForm() {
   }, [user])
 
 
-
-  // if (params.id) {
-  //   fetch(`/posts/${params.id}`)
-  //     .then(res => res.json())
-  //     .then(post => {
-  //       setTitle(post.title)
-  //       setBody(post.body)
-  //     })
-  //   fetchMethod = "PATCH"
-  //   URL = params.id
-  // } 
-  // else {
-  //   fetchMethod = "POST"
-  //   URL = ""
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch(`/posts/${url}`, { 

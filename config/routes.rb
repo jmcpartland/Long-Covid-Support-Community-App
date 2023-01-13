@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   
   resources :posts, only: [:index, :show, :create, :update, :destroy]
   resources :comments, only: [:show, :create, :destroy]
+  resources :resources, only: [:index, :show, :create, :update, :destroy]
   
-  # patch '/posts/:id/edit', to: 'posts#update'
   get '/posts/:id/comments', to: 'comments#show_all_comments'
   get '/all-posts', to: 'posts#all_posts'
   get '/all-posts/:id', to: 'posts#show_all_posts'
