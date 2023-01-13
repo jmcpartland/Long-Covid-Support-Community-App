@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box } from "@mui/system";
+import Comment from "./Comment";
 
 function Comments() {
   const [comments, setComments] = useState([])
@@ -17,13 +18,12 @@ function Comments() {
   },[])
 
   
-  const commentsList = comments.map(c => <p key={c.id}> {c.comment_text} </p>)
+  const commentsList = comments.map(c => <Comment key={c.id} comment={c} /> )
   
   return (
-    <Box
-      sx={{ p: 2, border: '1px solid grey' }}>
+    <>
       {commentsList}
-    </Box> 
+    </> 
   )
 
 }

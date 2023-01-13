@@ -20,7 +20,7 @@ function Header() {
     { title: 'Home', url: '/' },
     { title: 'My Posts', url:'/posts'},
     { title: 'All Posts', url: '/all-posts' },
-    // { title: 'Resources', url: '#' },
+    { title: 'Resources', url: '/resources' },
     // { title: 'Statistics', url: '#' },
   ];
 

@@ -1,15 +1,15 @@
 import React from "react";
-import CssBaseline from '@mui/material/CssBaseline';
 import { Route, Routes } from "react-router-dom";
+import { UserProvider } from "./context/user";
+import CssBaseline from '@mui/material/CssBaseline';
 import Header from "./components/Header";
 import PostForm from "./components/PostForm";
 import Login from "./components/Login";
 import PostsList from "./components/PostsList";
 import AllPostsList from "./components/AllPostsList";
 import Post from "./components/Post";
-// import AllPost from "./components/AllPost";
 import Home from "./components/Home";
-import { UserProvider } from "./context/user";
+import ResourcesList from "./components/ResourcesList";
 
 
 function App(props) {
@@ -28,6 +28,7 @@ function App(props) {
           <Route exact path="/all-posts/:id" element={<Post />} />
           <Route exact path="/all-posts" element={<AllPostsList />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/resources" element={<ResourcesList />} />
         </Routes>
       </UserProvider>
     </div>

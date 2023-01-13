@@ -8,7 +8,7 @@ function AllPostsList() {
     const {loggedIn} = useContext(UserContext)
     const [posts, setPosts] = useState([])
 
-    useEffect(() => { 
+    useEffect(() => {
         fetch('/all-posts')
         .then(res => res.json())
         .then(data => {

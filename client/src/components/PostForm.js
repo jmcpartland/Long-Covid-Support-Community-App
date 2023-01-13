@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/user";
 import { useParams, useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
@@ -7,37 +7,52 @@ import { Box } from "@mui/system";
 
 function PostForm() {
   const { user, loggedIn } = useContext(UserContext)
-  const userInitial = user.first_name
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
-  const [editTitle, setEditTitle] = useState("")
-  const [editBody, setEditBody] = useState("")
+  const [fetchMethod,setFetchMethod] = useState("")
+  const [url, setUrl] = useState("")
   const [errorsList, setErrorsList] = useState([])
+  const userInitial = user.first_name
   const params = useParams();
   const navigate = useNavigate()
 
+  useEffect(() => {
+    if (params.id) {
+      fetch(`/posts/${params.id}`)
+        .then(res => res.json())
+        .then(post => {
+          setTitle(post.title)
+          setBody(post.body)
+        })
+      setFetchMethod("PATCH")
+      setUrl(params.id)
+    } 
+    else {
+      setFetchMethod("POST")
+      setUrl("")
+    }
+  }, [user])
 
-  let fetchMethod = ""
-  let URL = ""
 
-  if (params.id) {
-    fetch(`/posts/${params.id}`)
-      .then(res => res.json())
-      .then(post => {
-        setEditTitle(post.title)
-        setEditBody(post.body)
-      })
-    fetchMethod = "PATCH"
-    URL = params.id
-  } 
-  else {
-    fetchMethod = "POST"
-    URL = ""
-  }
+
+  // if (params.id) {
+  //   fetch(`/posts/${params.id}`)
+  //     .then(res => res.json())
+  //     .then(post => {
+  //       setTitle(post.title)
+  //       setBody(post.body)
+  //     })
+  //   fetchMethod = "PATCH"
+  //   URL = params.id
+  // } 
+  // else {
+  //   fetchMethod = "POST"
+  //   URL = ""
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`/posts/${URL}`, { 
+    fetch(`/posts/${url}`, { 
       method: fetchMethod,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -64,9 +79,7 @@ function PostForm() {
       return (
         <Box
           padding={1}
-          sx={{
-            '& .MuiTextField-root': { mb: 1, width: '120ch' },
-          }}
+          sx={{'& .MuiTextField-root': { mb: 1, width: '120ch' },}}
           noValidate
           autoComplete="off"
         >
@@ -77,8 +90,8 @@ function PostForm() {
               variant="filled"
               id="title"
               name="title"
-              defaultValue={editTitle}
-              // value={title}
+              // defaultValue={editTitle}
+              value={title}
               rows={1}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -89,8 +102,8 @@ function PostForm() {
               variant="filled"
               id="body"
               name="body"
-              defaultValue={editBody}
-              // value={body}
+              // defaultValue={editBody}
+              value={body}
               rows={25}
               onChange={(e) => setBody(e.target.value)}
             />
