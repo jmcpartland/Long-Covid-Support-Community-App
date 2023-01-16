@@ -42,8 +42,6 @@ class PostsController < ApplicationController
     end
 
     def update
-        # binding.pry
-
         post = current_user.posts.find_by(id: params[:id])
         post.update(post_params)
 
@@ -56,6 +54,13 @@ class PostsController < ApplicationController
     end
 
     def destroy
+        post = current_user.posts.find_by(id: params[:id])
+        if post
+            post.delete
+            render json: post
+        else
+            render json: { error: "Post not found" }, status: :unauthorized
+        end
     end
 
 

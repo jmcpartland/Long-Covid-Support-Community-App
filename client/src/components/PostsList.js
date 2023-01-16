@@ -16,7 +16,12 @@ function PostsList() {
         })
     }, [])
 
-    const postListing = posts.map(p => <Posts key={p.id} post={p} />)
+    const updatePostsList = (post) => {
+      const updatedPosts = posts.filter((p) => p.id !== post.id);
+      setPosts(updatedPosts);
+    }
+
+    const postListing = posts.map(p => <Posts key={p.id} post={p} updatePostsList={updatePostsList} />)
 
     if (loggedIn) {
         return (

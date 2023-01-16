@@ -78,7 +78,7 @@ function Header() {
         <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+        sx={{ justifyContent: 'space-between', overflowX: 'auto', bgcolor: '#63a5db' }}
         >
         {sections.map((section) => (
           <Link

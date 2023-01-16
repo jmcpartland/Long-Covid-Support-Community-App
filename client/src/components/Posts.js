@@ -13,7 +13,7 @@ import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function Posts({post}) {
+function Posts({post, updatePostsList}) {
   const { user, loggedIn } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -21,12 +21,15 @@ function Posts({post}) {
     navigate(`/posts/${post.id}`)
   };
 
-  const handleClick = (e) => {
+  const handleShare = (e) => {
     console.log(e)
   }
 
   const handleDelete = (e) => {
-    console.log(e);
+    fetch(`posts/${post.id}`, {
+      method: 'DELETE',
+    })
+    .then(() => updatePostsList(post))
   };
 
   return (
@@ -43,10 +46,10 @@ function Posts({post}) {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share" onClick={handleShare}>
             <ShareIcon />
           </IconButton>
-          <IconButton aria-label="delete" onClick={handleClick}>
+          <IconButton aria-label="delete" onClick={handleDelete}>
             <DeleteIcon />
           </IconButton>
         </CardActions>
