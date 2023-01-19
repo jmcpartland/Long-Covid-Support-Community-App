@@ -9,7 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import AddComment from './AddComment';
+// import AddComment from './AddComment';
 import Comments from './Comments';
 
 function Post() {
@@ -44,7 +44,6 @@ function Post() {
   }
 
   const handleEditButton = () => {
-    console.log("Edit button clicked")
     navigate(`/posts/${post.id}/edit`)
   }
 
@@ -53,7 +52,7 @@ function Post() {
     <Box margin={2} justifyContent="center">
       <Card sx={{ padding: 2 }}>
         <Avatar sx={{ width: 32, height: 32 }}>
-          {post.user_initial}
+          {/* {author.first_name.charAt(0).toUpperCase()} */}
         </Avatar>
           { author.first_name } { author.last_name }
         <CardActions disableSpacing>
@@ -71,8 +70,8 @@ function Post() {
           { post.body }
       </Card>
 
-      <AddComment post={post}/>
-      <Comments />
+      {/* <AddComment post={post}/> */}
+      <Comments post={post}/>
 
     </Box>
     </>
