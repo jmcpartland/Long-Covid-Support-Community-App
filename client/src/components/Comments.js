@@ -6,7 +6,6 @@ import { UserContext } from "../context/user";
 import { Box } from "@mui/system";
 import Comment from "./Comment";
 
-
 function Comments({post}) {
   const { loggedIn } = useContext(UserContext)
   const [commentText, setCommentText] = useState([])
@@ -42,7 +41,7 @@ function Comments({post}) {
             if(!c.errors) {
                 setCommentText([])
             } else {
-                const errorLis = c.errors.map(e => <h3>{e}</h3>)
+                const errorLis = c.errors.map(e => <h3 key={e}>{e}</h3>)
                 setErrorsList(errorLis)
             }
         })

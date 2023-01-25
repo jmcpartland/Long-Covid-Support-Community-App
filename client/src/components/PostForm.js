@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Box } from "@mui/system";
+import Alert from '@mui/material/Alert';
 
 function PostForm() {
   const { user, loggedIn } = useContext(UserContext)
@@ -52,12 +53,21 @@ function PostForm() {
           setBody("")
           navigate('/posts')
         } else {
-          const errorLis = p.errors.map(e => <h3>{e}</h3>)
+          const errorLis = p.errors.map(e => <li key={e}>{e}</li>)
           setErrorsList(errorLis)
         }
       })
     }
 
+    const showAlert = () => {
+      if (errorsList.length !== 0) {
+        return (
+          <>
+            <br/><Alert severity="error">{errorsList}</Alert>
+          </>
+        )
+      }
+    }
 
     if (loggedIn) {
       return (
@@ -96,7 +106,7 @@ function PostForm() {
               Submit
             </Button>
       </form>
-        {errorsList}
+          { showAlert() }
     </Box>
   )
   } else {

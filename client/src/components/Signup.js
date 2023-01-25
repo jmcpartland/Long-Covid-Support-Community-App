@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
 
 function SignUp({ handleClose }) {
 
@@ -65,12 +66,22 @@ function SignUp({ handleClose }) {
               setPassword("")
               setPasswordConfirmation("")
               const errorLis = user.errors.map(e =>
-                   <li>{e}</li>
+                   <li key={e}>{e}</li>
               )
               setErrorsList(errorLis)
           }
       })
   }
+
+  const showAlert = () => {
+    if (errorsList.length !== 0) {
+      return (
+        <>
+          <br/><Alert severity="error">{errorsList}</Alert>
+        </>
+      )
+    }}
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -180,9 +191,7 @@ function SignUp({ handleClose }) {
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
-          <ul>
-            <h3>{errorsList}</h3>
-          </ul>
+          { showAlert() }
       </Container>
     </ThemeProvider>
   );

@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom";
-
+import Alert from '@mui/material/Alert';
 
 const Login = ({ handleClose }) => {
     const [email, setEmail] = useState("")
@@ -60,6 +60,19 @@ const Login = ({ handleClose }) => {
         })
     }
 
+    const showAlert = () => {
+      if (error == "") {
+      } else {
+        return (
+          <>
+            <br/>
+            <Alert severity="error">{error}</Alert>
+          </>
+        )
+      }
+    }
+
+    
     return (
         // <>
         //     <form onSubmit={handleSubmit}>
@@ -147,9 +160,9 @@ const Login = ({ handleClose }) => {
             </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
-            <ul>
-            <h3>{error}</h3>
-            </ul>
+            
+            {showAlert()}
+
         </Container>
         </ThemeProvider>
 
