@@ -50,7 +50,7 @@ const Login = ({ handleClose }) => {
         .then(user => {
             if (!user.error) {
                 login(user)
-                handleClose(true)
+                // handleClose(true) // Doesn't work when Login is full screen
                 navigate('/')
             } else {
                 setEmail("")
