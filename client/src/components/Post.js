@@ -71,6 +71,7 @@ function Post() {
       </Card>
 
       {/* <AddComment post={post}/> */}
+
       <Comments post={post}/>
 
     </Box>

@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get '/posts/:id/comments', to: 'comments#show_all_comments'
   get '/all-posts', to: 'posts#all_posts'
   get '/all-posts/:id', to: 'posts#show_all_posts'
-
+  put '/post/:id/like', to: 'posts#like'
+  
   # get 'all-comments', to: 'comments#all_comments'
   
   # Defines the root path route ("/")

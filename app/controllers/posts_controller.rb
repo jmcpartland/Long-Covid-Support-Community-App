@@ -63,8 +63,17 @@ class PostsController < ApplicationController
         end
     end
 
-
-    private
+    def like
+        binding.pry
+        
+        like = Post.find_by(params[:id])
+    
+        if like.valid?
+            render json: like
+        else
+            render json: { errors: like.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
 
     private
     def current_user

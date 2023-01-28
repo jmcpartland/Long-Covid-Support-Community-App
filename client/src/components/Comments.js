@@ -10,8 +10,8 @@ function Comments({post}) {
   const { loggedIn } = useContext(UserContext)
   const [commentText, setCommentText] = useState([])
   const [errorsList, setErrorsList] = useState([])
-  const navigate = useNavigate()
   const [comments, setComments] = useState([])
+  const navigate = useNavigate()
   const params = useParams();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Comments({post}) {
       // console.log(data)
         setComments(data)
     })
-  },[comments])
+  },[commentText])
 
   const commentsList = comments.map(c => <Comment key={c.id} comment={c} /> )
 

@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
@@ -45,6 +46,7 @@ function Posts({post, updatePostsList}) {
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
+            <FavoriteBorderIcon />
           </IconButton>
           <IconButton aria-label="share" onClick={handleShare}>
             <ShareIcon />
