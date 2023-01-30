@@ -56,6 +56,7 @@ const Home = () => {
                     Tincidunt eget nullam non nisi est.
                 </Typography>
             </Box>
+            <br/>
         </Container>
     )
 }

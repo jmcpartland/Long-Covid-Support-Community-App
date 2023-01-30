@@ -21,7 +21,7 @@ function Footer() {
   const title = "Long Covid Support Community"
 
   return (
-    <Box component="footer" sx={{ bgcolor: 'background.paper', py: 6 }}>
+    <Box component="footer" sx={{ bgcolor: '#63a5db', py: 6 }}>
       <Container maxWidth="lg">
         <Typography variant="h6" align="center" gutterBottom>
           {title}

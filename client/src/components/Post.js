@@ -5,12 +5,11 @@ import Box from '@mui/material/Box';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-// import AddComment from './AddComment';
 import Comments from './Comments';
+import Favorite from './Favorite';
 
 function Post() {
   const { user, loggedIn } = useContext(UserContext);
@@ -56,24 +55,17 @@ function Post() {
         </Avatar>
           { author.first_name } { author.last_name }
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites" onClick={handleClick}>
-            <FavoriteIcon />
-          </IconButton>
+          <Favorite />
           <IconButton aria-label="share" onClick={handleClick}>
             <ShareIcon />
           </IconButton>
         </CardActions>
-
         <h1>{ post.title }</h1>
           { editButton() }
         <br/>
           { post.body }
       </Card>
-
-      {/* <AddComment post={post}/> */}
-
       <Comments post={post}/>
-
     </Box>
     </>
   );

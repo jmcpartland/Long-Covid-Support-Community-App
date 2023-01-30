@@ -6,13 +6,11 @@ import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ShareIcon from '@mui/icons-material/Share';
 import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Favorite from './Favorite';
 
 function Posts({post, updatePostsList}) {
   const { user, loggedIn } = useContext(UserContext)
@@ -44,10 +42,9 @@ function Posts({post, updatePostsList}) {
         />
         </CardActionArea>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-            <FavoriteBorderIcon />
-          </IconButton>
+
+          <Favorite />
+
           <IconButton aria-label="share" onClick={handleShare}>
             <ShareIcon />
           </IconButton>

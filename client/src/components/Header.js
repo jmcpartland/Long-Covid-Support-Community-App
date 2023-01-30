@@ -100,7 +100,7 @@ function Header() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#4682B4' }}>
+        <Toolbar sx={{ height: 80, borderBottom: 2, borderColor: 'divider', bgcolor: '#4682B4' }}>
           {LogInOrOut()}
           <Typography
             component="h2"
