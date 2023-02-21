@@ -4,14 +4,14 @@ class PostsController < ApplicationController
     def all_posts
         posts = Post.all
 
-        render json: posts
+        render json: posts #, include: :likes
     end
 
     def show_all_posts
         # binding.pry
         post = Post.find_by(id: params[:id])
         if post
-            render json: post
+            render json: post, include: :user
         else
             render json: { error: "Post not found" }, status: :unauthorized
         end
@@ -64,15 +64,20 @@ class PostsController < ApplicationController
     end
 
     def like
-        binding.pry
-        
-        like = Post.find_by(params[:id])
-    
-        if like.valid?
-            render json: like
-        else
-            render json: { errors: like.errors.full_messages }, status: :unprocessable_entity
+        post = Post.find_by(id: params[:id])
+
+        if !already_liked
+            post.likes.create(user_id: current_user.id)
         end
+
+        # post = current_user.posts.find_by(id: params[:id])
+        # like = current_user.post.create(post_params)
+    
+        # if like.valid?
+        #     render json: like
+        # else
+        #     render json: { errors: like.errors.full_messages }, status: :unprocessable_entity
+        # end
     end
 
     private
@@ -86,6 +91,10 @@ class PostsController < ApplicationController
     
     def authorize
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+    end
+
+    def already_liked
+        Like.where(user_id: current_user.id, post_id: params[:id]).exists?
     end
 
 end

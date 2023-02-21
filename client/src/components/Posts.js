@@ -12,7 +12,7 @@ import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 import Favorite from './Favorite';
 
-function Posts({post, updatePostsList}) {
+function Posts({ post, updatePostsList }) {
   const { user, loggedIn } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -43,7 +43,7 @@ function Posts({post, updatePostsList}) {
         </CardActionArea>
         <CardActions disableSpacing>
 
-          <Favorite />
+        <Favorite post={post}/>
 
           <IconButton aria-label="share" onClick={handleShare}>
             <ShareIcon />

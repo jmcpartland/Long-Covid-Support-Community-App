@@ -101,16 +101,16 @@ function Header() {
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Toolbar sx={{ height: 80, borderBottom: 2, borderColor: 'divider', bgcolor: '#4682B4' }}>
+          {LogInOrOut()}
           <Typography
             component="h2"
             variant="h4"
             color="#ffffff"
-            align="left"
+            align="center"
             sx={{ flex: 1 }}
           >
             {title}
           </Typography>
-          {LogInOrOut()}
           {SignupOrAccount()}
         </Toolbar>
           {showSections()}
