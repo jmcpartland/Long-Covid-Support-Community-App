@@ -27,7 +27,8 @@ const Home = () => {
             <img src={long_covid_image} width="100%" height="100%"></img>
 
                 <Typography variant="h3" align="left">
-                    { CustomizeName() }
+                    {/* { CustomizeName() } */}
+                    Welcome {user.first_name}
                 </Typography>
                 <br/>
                 <Typography variant="h6" align="left">

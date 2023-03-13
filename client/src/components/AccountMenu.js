@@ -6,9 +6,9 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
+// import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { UserContext } from "../context/user";
@@ -16,11 +16,11 @@ import { useNavigate } from "react-router-dom"
 
 
 export default function AccountMenu() {
-  const {user, loggedIn} = useContext(UserContext);
+  const {user, logout} = useContext(UserContext);
   const userInitial = user.first_name.charAt(0).toUpperCase()
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
   const navigate = useNavigate()
+  const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,6 +34,16 @@ export default function AccountMenu() {
     navigate('/post-form')
   }
 
+  const handleLogout = () => {
+    fetch('/logout', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(() => {
+        logout()
+        navigate('/')
+    })
+}
 
   return (
     <React.Fragment>
@@ -99,7 +109,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
