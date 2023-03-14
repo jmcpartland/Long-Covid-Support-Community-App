@@ -97,18 +97,20 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          {/* <Avatar /> Profile */}
         </MenuItem>
         <MenuItem onClick={handleCreatePost}>
           <Avatar /> Create Post
         </MenuItem>
         <Divider />
-        <MenuItem>
+
+        {/* <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
-        </MenuItem>
+        </MenuItem> */}
+        
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />

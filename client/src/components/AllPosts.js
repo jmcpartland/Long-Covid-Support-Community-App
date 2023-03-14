@@ -29,7 +29,7 @@ function AllPosts({ post }) {
         <CardHeader
 
 
-          avatar={ <Avatar sx={{ width: 32, height: 32 }}>{       }</Avatar> }
+          avatar={ <Avatar sx={{ width: 32, height: 32 }}>{post.user.first_name.charAt(0).toUpperCase()}</Avatar> }
 
 
           title={ post.title }

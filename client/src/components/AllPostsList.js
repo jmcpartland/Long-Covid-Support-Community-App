@@ -11,9 +11,7 @@ function AllPostsList() {
     useEffect(() => {
         fetch('/all-posts')
         .then(res => res.json())
-        .then(data => {
-            setPosts(data)
-        })
+        .then(p => setPosts(p))
     }, [])
 
     const postListing = posts.map(p => <AllPosts key={p.id} post={p} />)
