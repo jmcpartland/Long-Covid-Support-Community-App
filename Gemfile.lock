@@ -177,7 +177,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
-  pg (~> 1.1)
+  pg (~> 1.4.5)
   pry
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
