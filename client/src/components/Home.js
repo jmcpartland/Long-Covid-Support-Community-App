@@ -12,14 +12,6 @@ const Home = () => {
     //     return name.charAt(0).toUpperCase() + name.slice(1);
     // }
 
-    const CustomizeName = () => {
-        if (loggedIn || !user.error) {
-            return (<div> Welcome {user.first_name}</div>)
-        } else {
-            return (<div>Welcome to the long covid support community</div>)
-        }
-    }
-
     return(
         <Container>
             <Box sx={{ width: '90%'}}>
@@ -27,7 +19,6 @@ const Home = () => {
             <img src={long_covid_image} width="100%" height="100%"></img>
 
                 <Typography variant="h3" align="left">
-                    {/* { CustomizeName() } */}
                     Welcome {user.first_name}
                 </Typography>
                 <br/>

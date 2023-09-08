@@ -13,7 +13,7 @@ import ResourcesList from "./components/ResourcesList";
 import ResourceForm from "./components/ResourceForm";
 import Footer from "./components/Footer";
 
-function App(props) {
+function App() {
 
   return (
     <div>
