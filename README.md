@@ -1,5 +1,5 @@
 # Long Covid Support Community App
-### version 0.2
+### version 0.1
 
 ## Description
 A secure community website for people with Long Covid. Users can create their own account, write blogs, read other user blogs and make comments. Users also have access to a research section where they can view and add information and links related to Long Covid. This project is built with a React frontend and a Ruby on Rails API backend. 
