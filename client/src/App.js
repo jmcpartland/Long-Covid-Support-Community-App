@@ -11,7 +11,6 @@ import Post from "./components/Post";
 import Home from "./components/Home";
 import ResourcesList from "./components/ResourcesList";
 import ResourceForm from "./components/ResourceForm";
-import Footer from "./components/Footer";
 
 function App(props) {
 
@@ -32,7 +31,6 @@ function App(props) {
           <Route exact path="/resources" element={<ResourcesList />} />
           <Route exact path="/resource-form" element={<ResourceForm />} />
         </Routes>
-        <Footer />
       </UserProvider>
     </div>
   );

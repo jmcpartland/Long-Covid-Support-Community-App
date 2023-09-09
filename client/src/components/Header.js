@@ -1,125 +1,128 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Link from '@mui/material/Link';
-import LoginModal from './LoginModal';
-import SignupModal from './SignupModal';
-import AccountMenu from './AccountMenu';
-import { UserContext } from "../context/user";
-import { useNavigate } from "react-router-dom"
 
-function Header() {
-  const {logout, loggedIn} = useContext(UserContext);
-  const navigate = useNavigate()
-  const title = "Long Covid Support Community"
-
-  const sections = [
-    { title: 'Home', url: '/' },
-    { title: 'My Posts', url:'/posts'},
-    { title: 'All Posts', url: '/all-posts' },
-    { title: 'Resources', url: '/resources' },
-  ];
-
-  const handleLogout = () => {
-      fetch('/logout', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' }
-      })
-      .then(() => {
-          logout()
-          navigate('/')
-      })
-  }
-
-  const LogInOrOut = () => {
-    if (loggedIn) {
-      return <Button onClick={handleLogout} variant="outlined" size="small">Logout</Button>
-    } else {
-      return <LoginModal />
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#815d72',
+    },
+    secondary: {
+      main: '#a9b650',
     }
-  }
+  },
+});
 
-  const SignupOrAccount = () => {
-    if (loggedIn) {
-      return (
-        <>
-          <Button variant="outlined" size="small" href="/post-form">Create Post</Button>
-          <AccountMenu />
-        </>
-      )
-      } else {
-      return <SignupModal />
-    }
-  }
-  
-  const showSections = () => {
-    if (loggedIn) {
-      return (
-        <Toolbar
-          component="nav"
-          variant="dense"
-          sx={{ justifyContent: 'center', overflowX: 'auto', bgcolor: '#4682B4' }}
-        >
-          {sections.map((section) => (
-            <Link
-              color="inherit"
-              noWrap
-              key={section.title}
-              variant="body1"
-              underline="none"
-              href={section.url}
-              sx={{ p: 1, flexShrink: 0 }}
-            >
-              {section.title}
-            </Link>
-          ))}
+const drawerWidth = 240;
+const navItems = ['Home', 'About', 'Contact'];
 
-        </Toolbar>
-      )
-    }
-  }
-  
-    const theme = createTheme({
-      status: {
-        danger: '#e53e3e',
-      },
-      palette: {
-        primary: {
-          main: '#ffffff',
-          darker: '#053e85',
-        },
-        neutral: {
-          main: '#64748B',
-          contrastText: '#fff',
-        },
-      },
-    });
-  
+function Header(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const title = "Long Covid Support Community";
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        {title}
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={item} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  const container = window !== undefined ? () => window().document.body : undefined;
+
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <Toolbar sx={{ height: "30%", borderBottom: 2, borderColor: 'divider', bgcolor: '#4682B4'}}>
+    <ThemeProvider theme={theme}>
+
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar component="nav">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
           <Typography
-            // component="h3"
-            variant="h4"
-            color="#ffffff"
-            align="left"
-            sx={{ flex: 1 }}
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             {title}
-
-            {showSections()}
-            
           </Typography>
-            {LogInOrOut()}
-            {SignupOrAccount()}
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {navItems.map((item) => (
+              <Button key={item} sx={{ color: '#fff' }}>
+                {item}
+              </Button>
+            ))}
+          </Box>
         </Toolbar>
-          
-      </ThemeProvider>
-    </React.Fragment>
+      </AppBar>
+      <nav>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </nav>
+      <Box component="main" sx={{ p: 3 }}>
+        <Toolbar />
+      </Box>
+    </Box>
+
+    </ThemeProvider>
   );
 }
+
+Header.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
+};
 
 export default Header;
