@@ -6,19 +6,15 @@ import { UserContext } from "../context/user";
 import long_covid_image from "../images/long_covid_image.jpeg"
 
 const Home = () => {
-    const { user } = useContext(UserContext)
+    const { user, loggedIn } = useContext(UserContext)
     
-    // function capitalizeFirstLetter(name) {
-    //     return name.charAt(0).toUpperCase() + name.slice(1);
-    // }
-
-    // const CustomizeName = () => {
-    //     if (loggedIn || !user.error) {
-    //         return (<div> Welcome {user.first_name}</div>)
-    //     } else {
-    //         return (<div>Welcome to the long covid support community</div>)
-    //     }
-    // }
+    const CustomizeName = () => {
+        if (loggedIn) {
+            return (<div> Welcome {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}</div>)
+        } else {
+            return (<div>Welcome to the long covid support community</div>)
+        }
+    }
 
     return(
         <Container>
@@ -27,11 +23,10 @@ const Home = () => {
             <img src={long_covid_image} width="100%" height="100%" alt="long covid" />
 
                 <Typography variant="h3" align="left">
-                    {/* { CustomizeName() } */}
-                    Welcome {user.first_name}
+                    { CustomizeName() }
                 </Typography>
                 <br/>
-                <Typography variant="h6" align="left">
+                <Typography variant="h5" align="left">
                     What we are about
                 </Typography>
                 <Typography variant="body1" align="left" gutterBottom>

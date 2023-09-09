@@ -20,7 +20,6 @@ function Header() {
     { title: 'My Posts', url:'/posts'},
     { title: 'All Posts', url: '/all-posts' },
     { title: 'Resources', url: '/resources' },
-    // { title: 'Statistics', url: '#' },
   ];
 
   const handleLogout = () => {
@@ -54,65 +53,70 @@ function Header() {
       return <SignupModal />
     }
   }
-
-  const theme = createTheme({
-    status: {
-      danger: '#e53e3e',
-    },
-    palette: {
-      primary: {
-        main: '#ffffff',
-        darker: '#053e85',
-      },
-      neutral: {
-        main: '#64748B',
-        contrastText: '#fff',
-      },
-    },
-  });
-
+  
   const showSections = () => {
     if (loggedIn) {
       return (
         <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto', bgcolor: '#63a5db' }}
+          component="nav"
+          variant="dense"
+          sx={{ justifyContent: 'center', overflowX: 'auto', bgcolor: '#4682B4' }}
         >
-        {sections.map((section) => (
-          <Link
-            color="inherit"
-            noWrap
-            key={section.title}
-            variant="body2"
-            href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
-          >
-            {section.title}
-          </Link>
-      ))}
-      </Toolbar>
+          {sections.map((section) => (
+            <Link
+              color="inherit"
+              noWrap
+              key={section.title}
+              variant="body1"
+              underline="none"
+              href={section.url}
+              sx={{ p: 1, flexShrink: 0 }}
+            >
+              {section.title}
+            </Link>
+          ))}
+
+        </Toolbar>
       )
     }
   }
-
+  
+    const theme = createTheme({
+      status: {
+        danger: '#e53e3e',
+      },
+      palette: {
+        primary: {
+          main: '#ffffff',
+          darker: '#053e85',
+        },
+        neutral: {
+          main: '#64748B',
+          contrastText: '#fff',
+        },
+      },
+    });
+  
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <Toolbar sx={{ height: 100, borderBottom: 2, borderColor: 'divider', bgcolor: '#4682B4'}}>
+        <Toolbar sx={{ height: "30%", borderBottom: 2, borderColor: 'divider', bgcolor: '#4682B4'}}>
           <Typography
-            component="h2"
+            // component="h3"
             variant="h4"
             color="#ffffff"
             align="left"
             sx={{ flex: 1 }}
           >
             {title}
+
+            {showSections()}
+            
           </Typography>
             {LogInOrOut()}
             {SignupOrAccount()}
         </Toolbar>
-          {showSections()}
+          
       </ThemeProvider>
     </React.Fragment>
   );
