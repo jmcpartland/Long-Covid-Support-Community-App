@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
-import { UserContext } from "../context/user";
+// import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 // import Post from './Post';
 import Favorite from './Favorite';

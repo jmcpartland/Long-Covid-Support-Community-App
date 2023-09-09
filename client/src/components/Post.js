@@ -12,7 +12,7 @@ import Comments from './Comments';
 import Favorite from './Favorite';
 
 function Post() {
-  const { user, loggedIn } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [ author, setAuthor ] = useState([])
   const [ post, setPost ] = useState([])
   const params = useParams();
@@ -48,25 +48,25 @@ function Post() {
 
   return (
     <>
-    <Box margin={2} justifyContent="center">
-      <Card sx={{ padding: 2 }}>
-        <Avatar sx={{ width: 32, height: 32 }}>
-          {/* {author.first_name.charAt(0).toUpperCase()} */}
-        </Avatar>
-          { author.first_name } { author.last_name }
-        <CardActions disableSpacing>
-          <Favorite />
-          <IconButton aria-label="share" onClick={handleClick}>
-            <ShareIcon />
-          </IconButton>
-        </CardActions>
-        <h1>{ post.title }</h1>
-          { editButton() }
-        <br/>
-          { post.body }
-      </Card>
-      <Comments post={post}/>
-    </Box>
+      <Box margin={2} justifyContent="center">
+        <Card sx={{ padding: 2 }}>
+          <Avatar sx={{ width: 32, height: 32 }}>
+            {/* {author.first_name.charAt(0).toUpperCase()} */}
+          </Avatar>
+            { author.first_name } { author.last_name }
+          <CardActions disableSpacing>
+            <Favorite />
+            <IconButton aria-label="share" onClick={handleClick}>
+              <ShareIcon />
+            </IconButton>
+          </CardActions>
+          <h1>{ post.title }</h1>
+            { editButton() }
+          <br/>
+            { post.body }
+        </Card>
+        <Comments post={post}/>
+      </Box>
     </>
   );
 }

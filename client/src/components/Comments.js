@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { UserContext } from "../context/user";
@@ -11,7 +11,7 @@ function Comments({post}) {
   const [commentText, setCommentText] = useState([])
   const [errorsList, setErrorsList] = useState([])
   const [comments, setComments] = useState([])
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const params = useParams();
 
   useEffect(() => {
@@ -81,6 +81,7 @@ function Comments({post}) {
     return (
       <div>
         <h3>You need to be logged in to add Comments</h3>
+        {errorsList}
       </div>
     ) 
   }

@@ -34,7 +34,6 @@ function PostForm() {
     }
   }, [user])
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch(`/posts/${url}`, { 
