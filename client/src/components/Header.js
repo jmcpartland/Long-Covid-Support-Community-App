@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
+import Link from '@mui/material/Link';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
@@ -30,6 +31,13 @@ const theme = createTheme({
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
 
+const sections = [
+  { title: 'Home', url: '/' },
+  { title: 'My Posts', url:'/posts'},
+  { title: 'All Posts', url: '/all-posts' },
+  { title: 'Resources', url: '/resources' },
+];
+
 function Header(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -46,13 +54,32 @@ function Header(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
+
+        {/* {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
+        ))} */}
+
+        {sections.map((section) => (
+          <ListItem key={section} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              {/* <ListItemText primary={section} /> */}
+              <Link
+                  color="#ffffff"
+                  key={section.title}
+                  underline="none"
+                  href={section.url}
+                  sx={{ p: 1, flexShrink: 0 }}
+                >
+                  {section.title}
+                </Link>
+            </ListItemButton>
+          </ListItem>
         ))}
+
       </List>
     </Box>
   );
@@ -83,11 +110,27 @@ function Header(props) {
             {title}
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
+
+            {/* {navItems.map((item) => (
               <Button key={item} sx={{ color: '#fff' }}>
                 {item}
               </Button>
+            ))} */}
+
+            {sections.map((section) => (
+              <Button>
+                <Link
+                  color="#ffffff"
+                  key={section.title}
+                  underline="none"
+                  href={section.url}
+                  sx={{ p: 1, flexShrink: 0 }}
+                >
+                  {section.title}
+                </Link>
+              </Button>
             ))}
+
           </Box>
         </Toolbar>
       </AppBar>
