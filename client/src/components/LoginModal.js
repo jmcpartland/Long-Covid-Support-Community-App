@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Login from './Login';
 
@@ -18,13 +17,21 @@ const style = {
 };
 
 function LoginModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="outlined" size="small">Login</Button>
+      <Button onClick={handleOpen} variant="outlined" size="small"
+        sx={{ 
+          border: 1,
+          borderRadius: '20px',
+          marginRight: '5px'
+        }}
+      >
+        Login
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

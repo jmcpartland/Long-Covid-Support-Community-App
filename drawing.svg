@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1114"
+   inkscape:version="1.1-rc (52f87ab, 2021-05-02)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1116"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     objecttolerance="10.0"
+     gridtolerance="10.0"
+     guidetolerance="10.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-nodes="false"
+     inkscape:snap-others="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="1.3416246"
+     inkscape:cx="450.20045"
+     inkscape:cy="744.9923"
+     inkscape:window-width="1490"
+     inkscape:window-height="1387"
+     inkscape:window-x="722"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g82058">
+    <sodipodi:guide
+       position="84.01195,195.23905"
+       orientation="0,-1"
+       id="guide24757" />
+    <sodipodi:guide
+       position="81.053782,140.61156"
+       orientation="0,-1"
+       id="guide48172" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1111">
+    <rect
+       x="229.57242"
+       y="282.49333"
+       width="304.10892"
+       height="310.07184"
+       id="rect7135" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text7133"
+       style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:192.00000242px;white-space:pre;shape-inside:url(#rect7135)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="185.5757"
+       y="169.79881"
+       id="text28563"><tspan
+         sodipodi:role="line"
+         id="tspan28561"
+         style="stroke-width:0.264583"
+         x="185.5757"
+         y="169.79881" /></text>
+    <g
+       id="g50783"
+       inkscape:export-filename="/Users/josephmcpartland/Development/code/projects/Long-Covid-Support-Community-App-ver_0.1/client/src/images/logoText.png"
+       inkscape:export-xdpi="96.598602"
+       inkscape:export-ydpi="96.598602">
+      <g
+         id="g82058"
+         inkscape:export-filename="/Users/josephmcpartland/Development/code/projects/Long-Covid-Support-Community-App-ver_0.1/client/src/images/logoText.png"
+         inkscape:export-xdpi="96.598633"
+         inkscape:export-ydpi="96.598633">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:35.5392px;line-height:1.25;font-family:sans-serif;fill:#577883;fill-opacity:1;stroke:none;stroke-width:0.1851;stroke-opacity:1"
+           x="-31.921061"
+           y="164.02629"
+           id="text24841"
+           inkscape:export-xdpi="96.598633"
+           inkscape:export-ydpi="96.598633"
+           transform="matrix(0.88722436,-0.44786093,0.43875874,0.90563012,0,0)"><tspan
+             sodipodi:role="line"
+             id="tspan24839"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.5392px;font-family:'Bodoni Ornaments';-inkscape-font-specification:'Bodoni Ornaments';fill:#577883;fill-opacity:1;stroke:none;stroke-width:0.1851;stroke-opacity:1"
+             x="-31.921061"
+             y="164.02629">h</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:15.5222px;line-height:0.82;font-family:sans-serif;fill:#577883;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="82.970657"
+           y="142.7184"
+           id="text1922"
+           inkscape:export-filename="/Users/josephmcpartland/Development/code/projects/Long-Covid-Support-Community-App-ver_0.1/client/src/images/longCovidCommunityText"
+           inkscape:export-xdpi="96.598633"
+           inkscape:export-ydpi="96.598633"><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.7px;font-family:Optima;-inkscape-font-specification:'Optima Bold';letter-spacing:0px;fill:#577883;fill-opacity:1;stroke-width:0.264583"
+             x="82.970657"
+             y="142.7184"
+             id="tspan1926"
+             dx="0 0">Long Covid</tspan><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15.5222px;font-family:Optima;-inkscape-font-specification:'Optima Bold';letter-spacing:0.264583px;fill:#577883;fill-opacity:1;stroke-width:0.264583"
+             x="82.970657"
+             y="155.44661"
+             id="tspan55393">Community</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

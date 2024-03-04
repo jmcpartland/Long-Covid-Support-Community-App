@@ -16,7 +16,7 @@ To install this application, run the following command:
 #### `bundle install`
 #### `rails s`
 
-
+``
 ###  open new console to run React
 
 #### `npm install --prefix client`

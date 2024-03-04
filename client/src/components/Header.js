@@ -1,26 +1,22 @@
 import React, { useContext } from 'react';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Stack, Button, AppBar, Toolbar } from '@mui/material';
 import Link from '@mui/material/Link';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import AccountMenu from './AccountMenu';
 import { UserContext } from "../context/user";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import logoText from '../images/logoText.png';
 
 function Header() {
   const {logout, loggedIn} = useContext(UserContext);
   const navigate = useNavigate()
-  const title = "Long Covid Support Community"
 
   const sections = [
     { title: 'Home', url: '/' },
     { title: 'My Posts', url:'/posts'},
     { title: 'All Posts', url: '/all-posts' },
     { title: 'Resources', url: '/resources' },
-    // { title: 'Statistics', url: '#' },
   ];
 
   const handleLogout = () => {
@@ -35,9 +31,9 @@ function Header() {
   }
 
   const LogInOrOut = () => {
-    if (loggedIn) {
-      return <Button onClick={handleLogout} variant="outlined" size="small">Logout</Button>
-    } else {
+    if (!loggedIn) {
+    //   return <Button variant='contained' size="small" onClick={handleLogout}>Logout</Button>
+    // } else {
       return <LoginModal />
     }
   }
@@ -46,75 +42,64 @@ function Header() {
     if (loggedIn) {
       return (
         <>
-          <Button variant="outlined" size="small" href="/post-form">Create Post</Button>
+          <Button variant='outlined' size="small" href="/post-form"
+            sx={{ 
+              border: 1,
+              borderRadius: '20px',
+            }}
+          >
+            Write
+          </Button> 
           <AccountMenu />
         </>
       )
-      } else {
+    } else {
       return <SignupModal />
     }
   }
 
-  const theme = createTheme({
-    status: {
-      danger: '#e53e3e',
-    },
-    palette: {
-      primary: {
-        main: '#ffffff',
-        darker: '#053e85',
-      },
-      neutral: {
-        main: '#64748B',
-        contrastText: '#fff',
-      },
-    },
-  });
 
   const showSections = () => {
     if (loggedIn) {
       return (
         <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto', bgcolor: '#63a5db' }}
-        >
-        {sections.map((section) => (
-          <Link
-            color="inherit"
-            noWrap
-            key={section.title}
-            variant="body2"
-            href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
+          variant="dense"
+          sx={{
+              minHeight: '30px',
+              justifyContent: 'space-between', 
+              bgcolor: 'primary.light',
+              color: 'primary.main'
+            }}
           >
-            {section.title}
-          </Link>
-      ))}
-      </Toolbar>
-      )
+            {sections.map((section) => (
+              <Link
+                color="inherit"
+                underline='none'
+                key={section.title}
+                href={section.url}
+                sx={{ fontSize: 15 }}
+                >
+                  {section.title}
+              </Link>
+            ))}
+        </Toolbar>
+        )
+      }
     }
-  }
+    
+    return (
+      <AppBar position="static">
+        
+        <Toolbar sx={{ flex: 1, justifyContent: 'space-between', bgcolor: '#ffffff' }}>
+          <img src={logoText} height="75" alt="logo" />
 
-  return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <Toolbar sx={{ height: 100, borderBottom: 2, borderColor: 'divider', bgcolor: '#4682B4'}}>
-          <Typography
-            component="h2"
-            variant="h4"
-            color="#ffffff"
-            align="left"
-            sx={{ flex: 1 }}
-          >
-            {title}
-          </Typography>
-            {LogInOrOut()}
+          <Stack direction="row" alignItems={'center'}>
+            {LogInOrOut()} 
             {SignupOrAccount()}
+          </Stack>
         </Toolbar>
           {showSections()}
-      </ThemeProvider>
-    </React.Fragment>
+      </AppBar>
   );
 }
 

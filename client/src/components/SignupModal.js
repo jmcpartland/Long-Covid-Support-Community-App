@@ -23,7 +23,14 @@ function SignupModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="outlined" size="small">Signup</Button>
+      <Button variant="outlined" size="small" onClick={handleOpen}
+        sx={{
+          border: 1,
+          borderRadius: '20px',
+        }}
+      >
+        Signup
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

@@ -177,6 +177,7 @@ function SignUp({ handleClose }) {
               type="submit"
               fullWidth
               variant="contained"
+              // size="medium"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
