@@ -19,16 +19,16 @@ function Header() {
     { title: 'Resources', url: '/resources' },
   ];
 
-  const handleLogout = () => {
-      fetch('/logout', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' }
-      })
-      .then(() => {
-          logout()
-          navigate('/')
-      })
-  }
+  // const handleLogout = () => {
+  //     fetch('/logout', {
+  //         method: 'DELETE',
+  //         headers: { 'Content-Type': 'application/json' }
+  //     })
+  //     .then(() => {
+  //         logout()
+  //         navigate('/')
+  //     })
+  // }
 
   const LogInOrOut = () => {
     if (!loggedIn) {

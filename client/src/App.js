@@ -32,25 +32,25 @@ function App() {
   return (
     <>
       <UserProvider>
-      <CssBaseline />
-        <ThemeProvider theme={theme}>
-          <Header />
-          <Container maxWidth="md">
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/post-form" element={<PostForm />} />
-              <Route exact path="/posts/:id" element={<Post />} />
-              <Route exact path="/posts/:id/edit" element={<PostForm />} />
-              <Route exact path="/posts" element={<PostsList />} />
-              <Route exact path="/all-posts/:id" element={<Post />} />
-              <Route exact path="/all-posts" element={<AllPostsList />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/resources" element={<ResourcesList />} />
-              <Route exact path="/resource-form" element={<ResourceForm />} />
-            </Routes>
-          </Container>
-          {/* <Footer /> */}
-        </ThemeProvider>
+        <CssBaseline />
+          <ThemeProvider theme={theme}>
+            <Header />
+            <Container maxWidth="md">
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/post-form" element={<PostForm />} />
+                <Route exact path="/posts/:id" element={<Post />} />
+                <Route exact path="/posts/:id/edit" element={<PostForm />} />
+                <Route exact path="/posts" element={<PostsList />} />
+                <Route exact path="/all-posts/:id" element={<Post />} />
+                <Route exact path="/all-posts" element={<AllPostsList />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/resources" element={<ResourcesList />} />
+                <Route exact path="/resource-form" element={<ResourceForm />} />
+              </Routes>
+            </Container>
+            {/* <Footer /> */}
+          </ThemeProvider>
       </UserProvider>
     </>
   );
