@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { UserContext } from '../context/user';
-import AllPosts from './AllPosts'
+import PostCard from './PostCard'
 
 function AllPostsList() {
     const {loggedIn} = useContext(UserContext)
@@ -14,7 +14,7 @@ function AllPostsList() {
         .then(p => setPosts(p))
     }, [])
 
-    const postListing = posts.map(p => <AllPosts key={p.id} post={p} />)
+    const postListing = posts.map(p => <PostCard key={p.id} post={p} />)
 
     if (loggedIn) {
         return (
