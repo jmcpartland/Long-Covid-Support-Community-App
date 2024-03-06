@@ -51,9 +51,13 @@ function Post() {
     <Box margin={2} justifyContent="center">
       <Card sx={{ padding: 2 }}>
         <Avatar sx={{ width: 32, height: 32 }}>
+          {/* fix authentication issues  */}
           {/* {author.first_name.charAt(0).toUpperCase()} */}
+
         </Avatar>
-          { author.first_name } { author.last_name }
+          {/* fix authentication issues  */}
+          {/* { author.first_name } { author.last_name } */}
+
         <CardActions disableSpacing>
           <Favorite />
           <IconButton aria-label="share" onClick={handleClick}>
@@ -61,11 +65,17 @@ function Post() {
           </IconButton>
         </CardActions>
         <h1>{ post.title }</h1>
+          
           { editButton() }
+
         <br/>
           { post.body }
       </Card>
-      <Comments post={post}/>
+
+      {/* fix authentication issues  */}
+      {/* <Comments post={post}/> */}
+
+
     </Box>
     </>
   );

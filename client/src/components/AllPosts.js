@@ -1,8 +1,5 @@
 import React, { useContext } from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardActions from '@mui/material/CardActions';
-import { CardActionArea } from '@mui/material';
+import { Box, Card, CardContent, CardActionArea, CardActions, CardHeader, Typography} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
@@ -13,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Favorite from './Favorite';
 
 function AllPosts({ post }) {
-  // const { user, loggedIn } = useContext(UserContext)
+  const { user, loggedIn } = useContext(UserContext)
   const navigate = useNavigate()
 
   // console.log(post.likes)
@@ -23,27 +20,34 @@ function AllPosts({ post }) {
   };
 
   return (
-    <Grid item xs={6}>
-      <Card sx={{ minWidth: 300 }}>
-      <CardActionArea onClick={handleCardClick} >
-        <CardHeader
+    <>
+      <Card sx={{ minHeight: 250 }}>
+        <CardContent>
+          <CardActionArea onClick={handleCardClick} >
+            <CardHeader
+              avatar={
+                <Avatar sx={{ width: 32, height: 32 }}>
+                  {post.user.first_name.charAt(0).toUpperCase()}
+                </Avatar> 
+              }
+              title={ post.title }
+              subheader={ post.created_at }
+            />
+            <Typography variant="body2" marginLeft={8}>
+              {post.body.split(/(?=\s)/gi).slice(0, 20).join('')} ...
+            </Typography>
 
+          </CardActionArea>
 
-          avatar={ <Avatar sx={{ width: 32, height: 32 }}>{post.user.first_name.charAt(0).toUpperCase()}</Avatar> }
-
-
-          title={ post.title }
-          subheader={ post.created_at }
-        />
-        </CardActionArea>
-        <CardActions disableSpacing>
+          <CardActions >
             <Favorite post={post}/>
-          <IconButton aria-label="share">
+            <IconButton aria-label="share">
             <ShareIcon />
-          </IconButton>
-        </CardActions>
+            </IconButton>
+          </CardActions>
+        </CardContent>
       </Card>
-    </Grid>
+    </>
   );
 }
 

@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-    before_action :authorize
-
+    before_action :authorize, except: [:all_posts, :show, :show_all_posts]
+    
     def all_posts
         posts = Post.all
-
+        
         render json: posts #, include: :likes
     end
-
+    
     def show_all_posts
         # binding.pry
         post = Post.find_by(id: params[:id])

@@ -38,7 +38,7 @@ function Header() {
     }
   }
 
-  const SignupOrAccount = () => {
+  const showSignupOrAccount = () => {
     if (loggedIn) {
       return (
         <>
@@ -65,37 +65,37 @@ function Header() {
         <Toolbar
           variant="dense"
           sx={{
-              minHeight: '30px',
-              justifyContent: 'space-between', 
-              bgcolor: 'primary.light',
-              color: 'primary.main'
-            }}
-          >
-            {sections.map((section) => (
-              <Link
-                color="inherit"
-                underline='none'
-                key={section.title}
-                href={section.url}
-                sx={{ fontSize: 15 }}
-                >
-                  {section.title}
-              </Link>
-            ))}
+            minHeight: '30px',
+            justifyContent: 'space-between', 
+            bgcolor: 'primary.light',
+            color: 'primary.main'
+          }}
+        >
+          {sections.map((section) => (
+          <Link
+            color="inherit"
+            underline='none'
+            key={section.title}
+            href={section.url}
+            sx={{ fontSize: 15 }}
+            >
+              {section.title}
+          </Link>
+          ))}
         </Toolbar>
-        )
-      }
+      )
     }
+  }
     
     return (
       <AppBar position="static">
-        
         <Toolbar sx={{ flex: 1, justifyContent: 'space-between', bgcolor: '#ffffff' }}>
-          <img src={logoText} height="75" alt="logo" />
-
+          <Link href='/'>
+            <img src={logoText} height="75" alt="logo" />
+          </Link>
           <Stack direction="row" alignItems={'center'}>
             {LogInOrOut()} 
-            {SignupOrAccount()}
+            {showSignupOrAccount()}
           </Stack>
         </Toolbar>
           {showSections()}
