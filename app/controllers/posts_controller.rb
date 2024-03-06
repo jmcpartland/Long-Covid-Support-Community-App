@@ -3,8 +3,8 @@ class PostsController < ApplicationController
     
     def all_posts
         posts = Post.all
-        
-        render json: posts #, include: :likes
+        posts_sorted = posts.sort_by { |k, v| k["created_at"] }
+        render json:  posts_sorted.to_a.reverse() #, include: :likes
     end
     
     def show_all_posts

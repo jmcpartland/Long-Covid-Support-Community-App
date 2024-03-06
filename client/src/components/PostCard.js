@@ -32,10 +32,11 @@ function PostCard({ post }) {
           <CardActionArea onClick={handleCardClick} >
             <CardHeader
               avatar={
-                <Avatar sx={{ width: 32, height: 32 }}>
+                <Avatar sx={{ width: 32, height: 32, backgroundColor: 'primary.main' }}>
                   {post.user.first_name.charAt(0).toUpperCase()}
                 </Avatar> 
               }
+              // disableTypography={true}
               titleTypographyProps={{fontSize:'16px', fontWeight:'bold' }}
               title={ post.title }
               subheader={ timeFormatted }
@@ -47,9 +48,9 @@ function PostCard({ post }) {
 
           <CardActions >
             <Favorite post={post}/>
-            <IconButton aria-label="share">
+            {/* <IconButton aria-label="share">
               <ShareIcon />
-            </IconButton>
+            </IconButton> */}
           </CardActions>
         </CardContent>
       </Card>

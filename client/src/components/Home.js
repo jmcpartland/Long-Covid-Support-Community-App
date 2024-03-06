@@ -25,7 +25,7 @@ const Home = () => {
     
     return (
       <Box>
-        <Box sx={{ marginTop: 2, width: '100%' }}>
+        <Box sx={{ marginTop: 2, marginBottom: 2 }}>
           <img src={long_covid_image} width="100%" height="100%" alt="" />
           <Typography variant="h7" align="left">
               Latest Posts
