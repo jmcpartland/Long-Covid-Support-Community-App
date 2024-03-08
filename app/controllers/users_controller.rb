@@ -20,6 +20,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def user_first_name
+        userName = User.first_name
+        render json: userName 
+    end
+
+
     private
 
     def user_params

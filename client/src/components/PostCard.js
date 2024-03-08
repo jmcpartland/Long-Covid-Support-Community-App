@@ -10,19 +10,19 @@ import {
       Typography
 } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
-import { UserContext } from "../context/user";
+// import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 import Favorite from './Favorite';
 
 function PostCard({ post }) {
-  const { user, loggedIn } = useContext(UserContext)
+  // const { user, loggedIn } = useContext(UserContext)
   const navigate = useNavigate()
   const timeFormatted = new Date(post.created_at).toDateString();
 
   // console.log(timeFormatted)
 
   const handleCardClick = () => {
-    navigate(`/all-posts/${post.id}`)
+    navigate(`/all-posts/${post.id}`, {state: { post }});
   };
 
   return (

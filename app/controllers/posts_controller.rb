@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authorize, except: [:all_posts, :show, :show_all_posts]
+    before_action :authorize, except: [:all_posts, :show, :show_post]
     
     def all_posts
         posts = Post.all
@@ -7,7 +7,7 @@ class PostsController < ApplicationController
         render json:  posts_sorted.to_a.reverse() #, include: :likes
     end
     
-    def show_all_posts
+    def show_post
         # binding.pry
         post = Post.find_by(id: params[:id])
         if post

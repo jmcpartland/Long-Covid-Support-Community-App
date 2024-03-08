@@ -1,31 +1,34 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from "../context/user";
 import Box from '@mui/material/Box';
 import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
+import { IconButton, Avatar, Button, TextField, Typography, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
 import Comments from './Comments';
 import Favorite from './Favorite';
 
 function Post() {
+  const location = useLocation();
+  const post = location.state.post;
+  const author = post.user.first_name
+
   const { user, loggedIn } = useContext(UserContext);
-  const [ author, setAuthor ] = useState([])
-  const [ post, setPost ] = useState([])
+  // const [ author, setAuthor ] = useState(location.state.user)
+  // const [ post, setPost ] = useState([])
   const params = useParams();
   const navigate = useNavigate()
+  const timeFormatted = new Date(post.created_at).toDateString();
 
-  useEffect(() => {
-    fetch(`/all-posts/${params.id}`)
-    .then(res => res.json())
-    .then(data => {
-      setPost(data)
-      setAuthor(data.user)
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetch(`/all-posts/${params.id}`)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setPost(data)
+  //     setAuthor(data.user)
+  //   })
+  // }, [])
+
 
   const handleClick = (e) => {
     console.log(e)
@@ -48,35 +51,48 @@ function Post() {
 
   return (
     <>
-    <Box margin={2} justifyContent="center">
-      <Card sx={{ padding: 2 }}>
-        <Avatar sx={{ width: 32, height: 32 }}>
-          {/* fix authentication issues  */}
-          {/* {author.first_name.charAt(0).toUpperCase()} */}
+      <Box margin={2} justifyContent="center">
 
-        </Avatar>
-          {/* fix authentication issues  */}
-          {/* { author.first_name } { author.last_name } */}
+        <Stack direction="row" alignItems={'center'}>
+          <Avatar sx={{ width: 32, height: 32, marginRight: 1 }}>
+            {/* fix authentication issues  */}
+            {author.charAt(0).toUpperCase()}
+          </Avatar>
 
-        <CardActions disableSpacing>
+          <Stack direction="column" >
+            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>
+              {/* fix authentication issues  */}
+              { author}
+            </Typography>
+            <Typography sx={{ fontSize: 12, color: 'gray' }}>
+              Posted on: { timeFormatted }
+            </Typography>
+          </Stack>
+
+        </Stack>
+
+        <Stack direction="row" alignItems={'center'}>
           <Favorite />
-          <IconButton aria-label="share" onClick={handleClick}>
+          <IconButton aria-label="share" edge="start" onClick={handleClick}>
             <ShareIcon />
           </IconButton>
-        </CardActions>
-        <h1>{ post.title }</h1>
-          
-          { editButton() }
+        </Stack>
+
+        <Typography variant='h4' fontWeight={'bold'}>
+          {post.title}
+        </Typography>
+
+            { editButton() }
 
         <br/>
+
+        <Typography variant='body1'>
           { post.body }
-      </Card>
+        </Typography>
 
-      {/* fix authentication issues  */}
-      {/* <Comments post={post}/> */}
+        {/* <Comments post={post}/> */}
 
-
-    </Box>
+      </Box>
     </>
   );
 }
