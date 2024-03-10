@@ -24,7 +24,7 @@ function Favorite({ post }) {
   }
 
   return (
-    <IconButton aria-label="add to favorites" edge="start" onClick={handleFavoriteClick}>
+    <IconButton edge="start" aria-label="add to favorites" onClick={handleFavoriteClick}>
       { favoriteIcon() }
     </IconButton>
   )

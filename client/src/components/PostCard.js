@@ -27,8 +27,8 @@ function PostCard({ post }) {
 
   return (
     <>
-      <Card sx={{ minHeight: 200 }}>
-        <CardContent>
+      <Card sx={{ minHeight: 150 }}>
+        <CardContent sx={{marginBottom: 0}}>
           <CardActionArea onClick={handleCardClick} >
 
 
@@ -52,7 +52,7 @@ function PostCard({ post }) {
             </Typography>
           </CardActionArea>
 
-          <CardActions >
+          <CardActions sx={{ paddingBottom: 0 }}>
             <Favorite post={post}/>
             {/* <IconButton aria-label="share">
               <ShareIcon />

@@ -51,7 +51,7 @@ function Post() {
               {post.user.first_name}
             </Typography>
             <Typography sx={{ fontSize: 12, color: 'gray' }}>
-              Posted on: { timeFormatted }
+              { timeFormatted }
             </Typography>
           </Stack>
 
