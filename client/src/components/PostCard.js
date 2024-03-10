@@ -30,17 +30,23 @@ function PostCard({ post }) {
       <Card sx={{ minHeight: 200 }}>
         <CardContent>
           <CardActionArea onClick={handleCardClick} >
-            <CardHeader
+
+
+            <CardHeader sx={{ paddingBottom: 1 }}
               avatar={
                 <Avatar sx={{ width: 32, height: 32, backgroundColor: 'primary.main' }}>
                   {post.user.first_name.charAt(0).toUpperCase()}
                 </Avatar> 
               }
               // disableTypography={true}
-              titleTypographyProps={{fontSize:'16px', fontWeight:'bold' }}
-              title={ post.title }
+              titleTypographyProps={{fontSize:'14px', fontWeight:'bold' }}
+              title={ post.user.first_name }
               subheader={ timeFormatted }
             />
+            <Typography sx={{ fontSize: 17, fontWeight: 'bold', marginLeft: 8 }}>
+                {post.title}
+            </Typography>
+
             <Typography variant="body2" marginLeft={8}>
               {post.body.split(/(?=\s)/gi).slice(0, 20).join('')} ...
             </Typography>

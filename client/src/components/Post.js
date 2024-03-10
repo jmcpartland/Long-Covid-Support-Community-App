@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from "../context/user";
 import Box from '@mui/material/Box';
-import CardActions from '@mui/material/CardActions';
 import { IconButton, Avatar, Button, TextField, Typography, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import Comments from './Comments';
@@ -11,24 +10,11 @@ import Favorite from './Favorite';
 function Post() {
   const location = useLocation();
   const post = location.state.post;
-  const author = post.user.first_name
 
   const { user, loggedIn } = useContext(UserContext);
-  // const [ author, setAuthor ] = useState(location.state.user)
-  // const [ post, setPost ] = useState([])
   const params = useParams();
   const navigate = useNavigate()
   const timeFormatted = new Date(post.created_at).toDateString();
-
-  // useEffect(() => {
-  //   fetch(`/all-posts/${params.id}`)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setPost(data)
-  //     setAuthor(data.user)
-  //   })
-  // }, [])
-
 
   const handleClick = (e) => {
     console.log(e)
@@ -54,15 +40,15 @@ function Post() {
       <Box margin={2} justifyContent="center">
 
         <Stack direction="row" alignItems={'center'}>
-          <Avatar sx={{ width: 32, height: 32, marginRight: 1 }}>
+          <Avatar sx={{ width: 32, height: 32, marginRight: 1, backgroundColor: 'primary.main' }}>
             {/* fix authentication issues  */}
-            {author.charAt(0).toUpperCase()}
+            {post.user.first_name.charAt(0).toUpperCase()}
           </Avatar>
 
           <Stack direction="column" >
             <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>
               {/* fix authentication issues  */}
-              { author}
+              {post.user.first_name}
             </Typography>
             <Typography sx={{ fontSize: 12, color: 'gray' }}>
               Posted on: { timeFormatted }
@@ -78,7 +64,7 @@ function Post() {
           </IconButton>
         </Stack>
 
-        <Typography variant='h4' fontWeight={'bold'}>
+        <Typography variant='h4' fontWeight={'bold'} borderBottom={2} borderColor={"primary.light"}>
           {post.title}
         </Typography>
 
@@ -86,10 +72,9 @@ function Post() {
 
         <br/>
 
-        <Typography variant='body1'>
+        <Typography sx={{whiteSpace: 'pre-line'}}>
           { post.body }
         </Typography>
-
         {/* <Comments post={post}/> */}
 
       </Box>

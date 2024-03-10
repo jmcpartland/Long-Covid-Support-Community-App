@@ -29,7 +29,7 @@ function SignupModal() {
           borderRadius: '20px',
         }}
       >
-        Signup
+        Sign up
       </Button>
       <Modal
         open={open}

@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Stack, Button, AppBar, Toolbar } from '@mui/material';
+import { Stack, IconButton, Button, AppBar, Toolbar } from '@mui/material';
 import Link from '@mui/material/Link';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import AccountMenu from './AccountMenu';
+import Search from './Search';
 import { UserContext } from "../context/user";
 import { useNavigate } from "react-router-dom";
 import logoText from '../images/logoText.png';
+import SearchIcon from '@mui/icons-material/Search';
 
 function Header() {
   const {logout, loggedIn} = useContext(UserContext);
@@ -93,10 +95,19 @@ function Header() {
           <Link href='/'>
             <img src={logoText} height="75" alt="logo" />
           </Link>
+          {/* <Search /> */}
+
           <Stack direction="row" alignItems={'center'}>
+            <IconButton color="primary" >
+              <SearchIcon/>
+            </IconButton>
             {LogInOrOut()} 
             {showSignupOrAccount()}
+
           </Stack>
+
+
+
         </Toolbar>
           {showSections()}
       </AppBar>
