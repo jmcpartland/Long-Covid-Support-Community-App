@@ -11,6 +11,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import { UserContext } from "../context/user";
 import { useNavigate } from 'react-router-dom';
 import Favorite from './Favorite';
+import PostCard from './PostCard'
 
 function Posts({ post, updatePostsList }) {
   const { user, loggedIn } = useContext(UserContext)
@@ -31,7 +32,21 @@ function Posts({ post, updatePostsList }) {
     .then(() => updatePostsList(post))
   };
 
+  // const postListing = posts.map(p => { 
+  //   return (
+  //     <Grid item xs={6} key={p.id}>
+  //       <PostCard post={p} />
+  //     </Grid>
+  //   )
+  // });
+
   return (
+    // <Grid container rowSpacing={1} columnSpacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
+    //   { postListing }
+    // </Grid>
+
+
+
     <Grid item xs={6}>
       <Card sx={{ minWidth: 300 }}>
       <CardActionArea onClick={handleCardClick} >

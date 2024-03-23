@@ -20,8 +20,8 @@ const Home = () => {
       <Grid item xs={6} key={p.id}>
         <PostCard post={p} />
       </Grid>
-      )
-    })
+    )
+  })
     
     return (
       <Box>
@@ -31,6 +31,7 @@ const Home = () => {
               Latest Posts
           </Typography>
         </Box>
+        
         <Grid container rowSpacing={1} columnSpacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
           { postListing }
         </Grid>

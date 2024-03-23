@@ -2,7 +2,8 @@ class PostsController < ApplicationController
     before_action :authorize, except: [:all_posts, :show, :show_post]
     
     def all_posts
-        posts = Post.all
+        # posts = Post.all
+        posts = Post.last(10)
         posts_sorted = posts.sort_by { |k, v| k["created_at"] }
         render json:  posts_sorted.to_a.reverse() #, include: :likes
     end

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Stack, IconButton, Button, AppBar, Toolbar } from '@mui/material';
+import { Box, Stack, IconButton, Button, AppBar, Toolbar } from '@mui/material';
 import Link from '@mui/material/Link';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
@@ -90,11 +90,12 @@ function Header() {
   }
     
     return (
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar sx={{ flex: 1, justifyContent: 'space-between', bgcolor: '#ffffff' }}>
           <Link href='/'>
             <img src={logoText} height="75" alt="logo" />
           </Link>
+
           {/* <Search /> */}
 
           <Stack direction="row" alignItems={'center'}>
@@ -103,11 +104,7 @@ function Header() {
             </IconButton>
             {LogInOrOut()} 
             {showSignupOrAccount()}
-
           </Stack>
-
-
-
         </Toolbar>
           {showSections()}
       </AppBar>

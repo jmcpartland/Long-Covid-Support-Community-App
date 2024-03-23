@@ -3,6 +3,8 @@
 
 ## To Do:
 
+Figure out infinite scrolling (MUI Data Grid Row updates?)
+
 ### Authentication
 - Check for proper email address
 - Make sure that the email address is all lowercase

@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from "../context/user";
 import Box from '@mui/material/Box';
-import { IconButton, Avatar, Button, TextField, Typography, Stack } from '@mui/material';
+import { IconButton, Avatar, Button, Typography, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import Comments from './Comments';
 import Favorite from './Favorite';
